@@ -1,4 +1,4 @@
-﻿namespace EGrocer.Business.Product;
+﻿namespace EGrocer.Business.Products;
 
 public class ProductService: IProductService
 {

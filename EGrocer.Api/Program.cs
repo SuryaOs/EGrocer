@@ -1,6 +1,10 @@
+using EGrocer.Infrastructure;
+
 var builder = WebApplication.CreateBuilder(args);
 {
-    builder.Services.AddControllers();
+    builder.Services
+        .AddInfrastructure(builder.Configuration)
+        .AddControllers();
 }
 
 var app = builder.Build();

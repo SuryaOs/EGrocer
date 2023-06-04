@@ -1,5 +1,11 @@
-﻿namespace EGrocer.Core.Common;
+﻿using EGrocer.Core.Categories;
+using EGrocer.Core.Products;
 
-public interface IUnitOfWork
+namespace EGrocer.Core.Common;
+
+public interface IUnitOfWork: IDisposable
 {
+    IProductRepository Product { get; }
+    ICategoryRepository Category { get; }
+    int Save();
 }

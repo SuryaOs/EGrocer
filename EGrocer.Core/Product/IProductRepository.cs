@@ -1,5 +1,7 @@
-﻿namespace EGrocer.Core.Product;
+﻿using EGrocer.Core.Common;
 
-public interface IProductRepository
+namespace EGrocer.Core.Products;
+
+public interface IProductRepository: IGenericRepository<Product>
 {
 }

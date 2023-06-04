@@ -1,4 +1,4 @@
-﻿namespace EGrocer.Business.Category;
+﻿namespace EGrocer.Business.Categories;
 
 public interface ICategoryService
 {

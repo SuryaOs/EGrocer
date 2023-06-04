@@ -1,7 +1,11 @@
-﻿using EGrocer.Core.Category;
+﻿using EGrocer.Core.Categories;
+using EGrocer.Infrastructure.Repositories.Common;
 
-namespace EGrocer.Infrastructure.Repositories.Category;
+namespace EGrocer.Infrastructure.Repositories.Categories;
 
-public class CategoryRepository: ICategoryRepository
+public class CategoryRepository : GenericRepository<Category>, ICategoryRepository
 {
+    public CategoryRepository(GrocerDbContext dbContext) : base(dbContext)
+    {
+    }
 }

@@ -1,5 +1,7 @@
-﻿namespace EGrocer.Core.Category;
+﻿using EGrocer.Core.Common;
 
-public interface ICategoryRepository
+namespace EGrocer.Core.Categories;
+
+public interface ICategoryRepository: IGenericRepository<Category>
 {
 }
