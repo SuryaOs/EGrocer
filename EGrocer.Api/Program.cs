@@ -1,9 +1,11 @@
 using EGrocer.Infrastructure;
+using EGrocer.Business;
 
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services
         .AddInfrastructure(builder.Configuration)
+        .AddBusiness()
         .AddControllers();
 }
 

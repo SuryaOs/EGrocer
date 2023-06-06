@@ -1,5 +1,4 @@
-﻿using EGrocer.Core.Common;
-using Microsoft.AspNetCore.Http;
+﻿using EGrocer.Business.Categories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EGrocer.Api.Features.Category
@@ -8,17 +7,17 @@ namespace EGrocer.Api.Features.Category
     [ApiController]
     public class CategoryController : ControllerBase
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly ICategoryService _categoryService;
 
-        public CategoryController(IUnitOfWork unitOfWork)
+        public CategoryController(ICategoryService categoryService)
         {
-            _unitOfWork = unitOfWork;
+            _categoryService = categoryService;
         }
         [HttpGet]
-        public IActionResult Get() 
+        public async Task<IActionResult> Get() 
         {
-            var Categories = _unitOfWork.Category.GetAllAsync().Result;
-            return Ok(Categories);
+            var categories = await _categoryService.GetAll();
+            return Ok(categories);
         }
     }
 }
