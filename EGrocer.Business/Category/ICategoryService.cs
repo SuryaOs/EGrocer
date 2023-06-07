@@ -5,6 +5,7 @@ namespace EGrocer.Business.Categories;
 public interface ICategoryService
 {
     Task<IEnumerable<Category>> GetAll();
-    Task<bool> Create(Category category);
+    Task<bool> Create(CategoryRequest category);
+    Task<bool> Delete(int categoryId);
 
 }
