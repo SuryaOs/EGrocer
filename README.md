@@ -17,8 +17,8 @@ An E-Commerce Web API for Grocery Products where vendors can add, view, edit and
     - So, even one operation fails, it reverts the transaction.
     - It avoids database incosistency
 4) It seems Microsoft had announced that EF Core is already a combination of Repository with Unit of Work.
-    - DbContext is repository pattern
-    - Dbset is unit of work. ( Yet to understand more on this )
+    - DbContext is UoW
+    - Dbset is repository. ( Yet to understand more on this )
 
 # Challenges
 1) Service Layer is addition layer which might not be required for simple application.
