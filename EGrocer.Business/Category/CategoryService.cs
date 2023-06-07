@@ -30,6 +30,20 @@ public class CategoryService : ICategoryService
 
         return rowsAdded > 0;
     }
+    public async Task<bool> Update(int categoryId, CategoryRequest categoryRequest)
+    {
+        var category = await _unitOfWork.Category.GetByIdAsync(categoryId);
+        if (category == null)
+            return false;
+
+        category.Name = categoryRequest.Name;
+        category.Description = categoryRequest.Description;
+
+        _unitOfWork.Category.Update(category);
+        var rowsUpdated = _unitOfWork.Save();
+
+        return rowsUpdated > 0;
+    }
     public async Task<bool> Delete(int categoryId)
     {
         if (categoryId > 0)
@@ -43,6 +57,5 @@ public class CategoryService : ICategoryService
             }
         }
         return false;
-
     }
 }

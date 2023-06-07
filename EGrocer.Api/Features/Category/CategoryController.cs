@@ -37,4 +37,10 @@ public class CategoryController : ControllerBase
         var isDeleted = await _categoryService.Delete(id);
         return Ok(isDeleted);
     }
+    [HttpPut("{id:int}")]
+    public async Task<IActionResult> Update(int id, CategoryRequest category)
+    {
+        var result = await _categoryService.Update(id, category);
+        return Ok(result);
+    }
 }
