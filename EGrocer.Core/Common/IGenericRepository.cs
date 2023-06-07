@@ -6,6 +6,7 @@ public interface IGenericRepository<T> where T : class
 {
     Task<IEnumerable<T>> GetAllAsync();
     Task<T?> GetAsync(Expression<Func<T, bool>> expression);
+    Task<IEnumerable<T>> GetAllByCondition(Expression<Func<T, bool>> expression);
     Task<T?> GetByIdAsync(int id);
     Task AddAsync(T entity);
     Task AddRangeAsync(IEnumerable<T> entities);

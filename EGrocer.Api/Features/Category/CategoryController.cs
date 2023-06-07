@@ -31,16 +31,16 @@ public class CategoryController : ControllerBase
         //    : StatusCode(500, "An internal server error occurred.");
         return Ok(result);
     }
-    [HttpDelete("{id:int}")]
-    public async Task<IActionResult> Delete(int id)
+    [HttpDelete("{categoryId:int}")]
+    public async Task<IActionResult> Delete(int categoryId)
     {
-        var isDeleted = await _categoryService.Delete(id);
+        var isDeleted = await _categoryService.Delete(categoryId);
         return Ok(isDeleted);
     }
-    [HttpPut("{id:int}")]
-    public async Task<IActionResult> Update(int id, CategoryRequest category)
+    [HttpPut("{categoryId:int}")]
+    public async Task<IActionResult> Update(int categoryId, CategoryRequest category)
     {
-        var result = await _categoryService.Update(id, category);
+        var result = await _categoryService.Update(categoryId, category);
         return Ok(result);
     }
 }
