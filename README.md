@@ -25,3 +25,19 @@ An E-Commerce Web API for Grocery Products where vendors can add, view, edit and
 2) In that case, it will become harder to map Entity object to View object / vice versa.
 3) We can add it in controller level, but I don't think it as a best practice as we need to keep controller clean with just HTTP statements.
 4) That is the reason I have added Service Layer. we can use it for handling complex business logic, mapping objects, etc..
+
+# Current Features
+1) Entity Framework Core 7
+2) SQL Server
+3) Code First Approach
+4) Global Exception Handling Middleware
+5) Tried to keep clean code
+# Features Planned
+1) JWT Authentication and Authorization with Identity Server
+2) Angular web app
+# Optional
+1) Logging with Seri Log
+2) Azure App Configuration/Key vault integration
+3) SignalR
+4) CI pipeline to build and push docker image to any registries (probably ACR or any other free registries)
+5) Azure Container Instance / K8s with helm chart
