@@ -15,7 +15,7 @@ public class CategoryService : ICategoryService
    public async Task<IEnumerable<Category>> GetAll()
     {
         var categories = await _unitOfWork.Category.GetAllAsync();
-        return categories ?? Enumerable.Empty<Category>() ;
+        return categories ?? Enumerable.Empty<Category>();
     }
     public async Task<bool> Create(CategoryRequest categoryRequest)
     {
