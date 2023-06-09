@@ -38,5 +38,6 @@ An E-Commerce Web API for Grocery Products where vendors can add, view, edit and
 # Optional
 1) Logging with Seri Log
 2) Azure App Configuration/Key vault integration
-3) CI pipeline to build and push docker image to any registries (probably ACR or any other free registries)
-4) Azure Container Instance / K8s with helm chart
+3) SignalR
+4) CI pipeline to build and push docker image to any registries (probably ACR or any other free registries)
+5) Azure Container Instance / K8s with helm chart
