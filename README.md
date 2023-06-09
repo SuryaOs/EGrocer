@@ -34,7 +34,9 @@ An E-Commerce Web API for Grocery Products where vendors can add, view, edit and
 5) Tried to keep clean code
 # Features Planned
 1) JWT Authentication and Authorization with Identity Server
-2) Logging with Seri Log
-3) Azure App Configuration/Key vault integration
-4) CI pipeline to build and push docker image to any registries (probably ACR or any other free registries)
-5) Azure Container Instance / K8s with helm chart
+2) Angular web app
+# Optional
+1) Logging with Seri Log
+2) Azure App Configuration/Key vault integration
+3) CI pipeline to build and push docker image to any registries (probably ACR or any other free registries)
+4) Azure Container Instance / K8s with helm chart
