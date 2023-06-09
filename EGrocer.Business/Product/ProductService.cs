@@ -14,14 +14,14 @@ public class ProductService : IProductService
     public async Task<IEnumerable<Product>> GetAll()
     {
         var products = await _unitOfWork.Product.GetAllAsync();
-        return products ?? Enumerable.Empty<Product>();
+        return products;
     }
-    public async Task<IEnumerable<Product>> Get(int categoryId)
+    public async Task<IEnumerable<Product?>> Get(int categoryId)
     {
         var products = await _unitOfWork.Product.GetAllByCondition(x => x.CategoryId == categoryId);
-        return products ?? Enumerable.Empty<Product>();
+        return products;
     }
-    public async Task<Product> GetDetails(int productId)
+    public async Task<Product?> GetDetails(int productId)
     {
         var product = await _unitOfWork.Product.GetByIdAsync(productId);
         return product;

@@ -14,6 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 {
     app.AddSwagger();
+    app.AddGlobalErrorHandler();
     app.UseHttpsRedirection();
     app.MapControllers();
     app.Run();
