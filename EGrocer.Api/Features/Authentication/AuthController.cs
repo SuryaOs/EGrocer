@@ -31,13 +31,11 @@ public class AuthController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginRequest userRequest)
     {
-        if (!ModelState.IsValid)
-            throw new BadRequestException("Invalid Login request");
-
         var login = await _authService.Login(userRequest);
-        if (!login)
-            return Unauthorized(userRequest);
 
-        return Ok();
+        if (!login)
+            throw new UnauthorizedException("Invalid Email or Password");
+
+        return Ok(login);
     }
 }

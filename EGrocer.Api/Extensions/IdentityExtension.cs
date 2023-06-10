@@ -10,15 +10,10 @@ public static class IdentityExtension
     {
         services.AddAuthentication();
 
-        var builder = services.AddIdentityCore<User>(ConfigureIdentityOptions);
-
-        builder = new IdentityBuilder(
-          builder.UserType,
-          typeof(IdentityRole),
-          services);
-
-        builder.AddEntityFrameworkStores<GrocerDbContext>().AddDefaultTokenProviders();
-
+        var builder = services
+                        .AddIdentity<User, IdentityRole>(ConfigureIdentityOptions)
+                        .AddEntityFrameworkStores<GrocerDbContext>()
+                        .AddDefaultTokenProviders();
         return services;
     }
     private static void ConfigureIdentityOptions(IdentityOptions options)

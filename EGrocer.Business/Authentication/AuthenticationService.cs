@@ -6,12 +6,12 @@ namespace EGrocer.Business.Authentication;
 public class AuthenticationService : IAuthenticationService
 {
     private readonly UserManager<User> _userManager;
-    // private readonly SignInManager<User> _signInManager;
+    private readonly SignInManager<User> _signInManager;
 
-    public AuthenticationService(UserManager<User> userManager)
+    public AuthenticationService(UserManager<User> userManager, SignInManager<User> signInManager)
     {
         _userManager = userManager;
-        // _signInManager = signInManager;
+        _signInManager = signInManager;
     }
 
     public async Task<bool> Register(RegisterRequest userRequest)
@@ -31,9 +31,12 @@ public class AuthenticationService : IAuthenticationService
 
     public async Task<bool> Login(LoginRequest userRequest)
     {
-        // var result = await _signInManager.PasswordSignInAsync(userRequest.Email, userRequest.Password, false, false);
-        // return result.Succeeded;
-        return false;
-    }
+    //     var identityUser = await _userManager.FindByEmailAsync(userRequest.Email);
+    //     if(identityUser is null)
+    //     return null;
 
+    //    return await _userManager.CheckPasswordAsync(identityUser, userRequest.Password);
+       var result = await _signInManager.PasswordSignInAsync(userRequest.Email, userRequest.Password, false, false);
+       return result.Succeeded;
+    }
 }

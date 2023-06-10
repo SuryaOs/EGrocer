@@ -6,10 +6,10 @@ using EGrocer.Api.Extensions;
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services
+        .ConfigureIdentity()
         .AddApplication()
         .AddInfrastructure(builder.Configuration)
         .AddBusiness()
-        .ConfigureIdentity()
         .AddControllers();
 }
 
