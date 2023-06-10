@@ -1,5 +1,6 @@
 ﻿using EGrocer.Api.Exceptions;
 using EGrocer.Business.Categories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EGrocer.Api.Features.Categories;
@@ -14,7 +15,7 @@ public class CategoryController : ControllerBase
     {
         _categoryService = categoryService;
     }
-    [HttpGet]
+    [HttpGet, Authorize]
     public async Task<IActionResult> Get()
     {
         var categories = await _categoryService.GetAll();

@@ -1,32 +1,17 @@
-﻿using EGrocer.Api.Middleware;
-using Microsoft.OpenApi.Models;
+﻿using EGrocer.Api.Extensions;
 
 namespace EGrocer.Api.ServiceExtensions;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddApplication(this IServiceCollection services)
+    public static IServiceCollection AddApplication(this IServiceCollection services, ConfigurationManager configuration)
     {
-        _ = services
-        .AddScoped<ExceptionHandlingMiddleware>()
-        .AddSwaggerGen(c => c.SwaggerDoc("v1", new OpenApiInfo { Title = "My API", Version = "v1" }));
+        services
+        .ConfigureMiddleware()
+        .ConfigureOpenApi()
+        .ConfigureIdentity()
+        .ConfigureAuthentication(configuration);
 
         return services;
     }
-
-    public static IApplicationBuilder AddSwagger(this IApplicationBuilder app)
-    {
-        app.UseSwagger();
-
-        app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"));
-
-        return app;
-    }
-
-    public static IApplicationBuilder AddGlobalErrorHandler(this IApplicationBuilder app)
-    {
-        return app.UseMiddleware<ExceptionHandlingMiddleware>();
-    }
-
-
 }

@@ -370,3 +370,5 @@ Requests/Product/GetByCategory.http
 Requests/Product/GetByProduct.http
 .vscode/launch.json
 .vscode/tasks.json
+Requests/Authentication/login.http
+Requests/Authentication/register.http

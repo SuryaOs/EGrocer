@@ -25,6 +25,7 @@ An E-Commerce Web API for Grocery Products where vendors can add, view, edit and
 2) In that case, it will become harder to map Entity object to View object / vice versa.
 3) We can add it in controller level, but I don't think it as a best practice as we need to keep controller clean with just HTTP statements.
 4) That is the reason I have added Service Layer. we can use it for handling complex business logic, mapping objects, etc..
+5) While configuring Identity Server with AddIdentityCore, SignInManager was throwing dependency exception, so changed it to AddIdentity.
 
 # Current Features
 1) Entity Framework Core 7

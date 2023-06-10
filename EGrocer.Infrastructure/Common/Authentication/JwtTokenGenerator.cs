@@ -16,7 +16,7 @@ public class JwtTokenGenerator : IJwtTokenGenerator
         _jwtSettings = jwtSettings.Value;
     }
 
-    public string GenerateToken(Guid userId, string firstName, string lastName)
+    public string GenerateToken(string Email)
     {
         var signingCredentials = new SigningCredentials(
     new SymmetricSecurityKey(
@@ -24,10 +24,12 @@ public class JwtTokenGenerator : IJwtTokenGenerator
     SecurityAlgorithms.HmacSha256);
         var claims = new[]
         {
-            new Claim(JwtRegisteredClaimNames.Sub, userId.ToString()),
-            new Claim(JwtRegisteredClaimNames.GivenName, firstName),
-            new Claim(JwtRegisteredClaimNames.FamilyName, lastName),
+            // new Claim(JwtRegisteredClaimNames.Sub, userId.ToString()),
+            // new Claim(JwtRegisteredClaimNames.GivenName, firstName),
+            // new Claim(JwtRegisteredClaimNames.FamilyName, lastName),
+            new Claim(JwtRegisteredClaimNames.Email, Email),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+            new Claim(ClaimTypes.Role, "Admin")
         };
 
         var securityToken = new JwtSecurityToken(
