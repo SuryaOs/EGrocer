@@ -6,8 +6,7 @@ using EGrocer.Api.Extensions;
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services
-        .ConfigureIdentity()
-        .AddApplication()
+        .AddApplication(builder.Configuration)
         .AddInfrastructure(builder.Configuration)
         .AddBusiness()
         .AddControllers();
@@ -18,6 +17,8 @@ var app = builder.Build();
     app.AddSwagger();
     app.AddGlobalErrorHandler();
     app.UseHttpsRedirection();
+    app.UseAuthentication();
+    app.UseAuthorization();
     app.MapControllers();
     app.Run();
 }

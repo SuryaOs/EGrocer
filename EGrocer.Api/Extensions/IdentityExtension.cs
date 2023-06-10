@@ -8,8 +8,6 @@ public static class IdentityExtension
 {
     public static IServiceCollection ConfigureIdentity(this IServiceCollection services)
     {
-        services.AddAuthentication();
-
         var builder = services
                         .AddIdentity<User, IdentityRole>(ConfigureIdentityOptions)
                         .AddEntityFrameworkStores<GrocerDbContext>()
