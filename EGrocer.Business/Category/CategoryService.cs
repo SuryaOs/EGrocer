@@ -30,11 +30,11 @@ public class CategoryService : ICategoryService
 
         return rowsAdded > 0;
     }
-    public async Task<bool> Update(int categoryId, CategoryRequest categoryRequest)
+    public async Task<bool?> Update(int categoryId, CategoryRequest categoryRequest)
     {
         var category = await _unitOfWork.Category.GetByIdAsync(categoryId);
         if (category == null)
-            return false;
+            return null;
 
         category.Name = categoryRequest.Name;
         category.Description = categoryRequest.Description;
@@ -44,18 +44,14 @@ public class CategoryService : ICategoryService
 
         return rowsUpdated > 0;
     }
-    public async Task<bool> Delete(int categoryId)
+    public async Task<bool?> Delete(int categoryId)
     {
-        if (categoryId > 0)
-        {
-            var categoryDetails = await _unitOfWork.Category.GetByIdAsync(categoryId);
-            if(categoryDetails != null)
-            {
-                _unitOfWork.Category.Delete(categoryDetails);
-                var rowsDeleted = _unitOfWork.Save();
-                return rowsDeleted > 0;
-            }
-        }
-        return false;
+        var categoryDetails = await _unitOfWork.Category.GetByIdAsync(categoryId);
+        if(categoryDetails == null)
+            return null;
+
+            _unitOfWork.Category.Delete(categoryDetails);
+            var rowsDeleted = _unitOfWork.Save();
+            return rowsDeleted > 0;
     }
 }

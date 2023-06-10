@@ -1,4 +1,5 @@
-﻿using EGrocer.Business.Categories;
+﻿using EGrocer.Api.Exceptions;
+using EGrocer.Business.Categories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EGrocer.Api.Features.Categories;
@@ -34,13 +35,15 @@ public class CategoryController : ControllerBase
     [HttpDelete("{categoryId:int}")]
     public async Task<IActionResult> Delete(int categoryId)
     {
-        var isDeleted = await _categoryService.Delete(categoryId);
+        var isDeleted = await _categoryService.Delete(categoryId)
+                                ?? throw new NotFoundException("Category not found");
         return Ok(isDeleted);
     }
     [HttpPut("{categoryId:int}")]
     public async Task<IActionResult> Update(int categoryId, CategoryRequest category)
     {
-        var result = await _categoryService.Update(categoryId, category);
-        return Ok(result);
+        var isUpdated = await _categoryService.Update(categoryId, category)
+                                ?? throw new NotFoundException("Category not found");
+        return Ok(isUpdated);
     }
 }
