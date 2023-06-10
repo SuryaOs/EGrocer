@@ -1,6 +1,7 @@
 using EGrocer.Infrastructure;
 using EGrocer.Business;
 using EGrocer.Api.ServiceExtensions;
+using EGrocer.Api.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 {
@@ -8,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
         .AddApplication()
         .AddInfrastructure(builder.Configuration)
         .AddBusiness()
+        .ConfigureIdentity()
         .AddControllers();
 }
 

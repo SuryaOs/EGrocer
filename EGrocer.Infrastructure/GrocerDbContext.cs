@@ -1,10 +1,12 @@
 ﻿using EGrocer.Core.Categories;
 using EGrocer.Core.Products;
+using EGrocer.Infrastructure.Common.Authentication;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace EGrocer.Infrastructure;
 
-public class GrocerDbContext : DbContext
+public class GrocerDbContext : IdentityDbContext<User>
 {
     public GrocerDbContext(DbContextOptions<GrocerDbContext> options) : base(options)
     {
@@ -14,8 +16,11 @@ public class GrocerDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        //allow to extend base behavior of db context
+        base.OnModelCreating(modelBuilder);
+
         //Seeding data to test relations - optional
-                modelBuilder.Entity<Category>().HasData(
+        modelBuilder.Entity<Category>().HasData(
             new Category { Id = 1, Name = "Beverages", Description = "Beverage you for quick energy" },
             new Category { Id = 2, Name = "Fruits and Vegetables", Description = "Fruits and Veggies" },
             new Category { Id = 3, Name = "Breakfasts and Cereals", Description = "Breakfas and Cereals in 5 Minutes" }
