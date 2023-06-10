@@ -6,21 +6,26 @@ namespace EGrocer.Api.Extensions;
 
 public static class IdentityExtension
 {
-  public static IServiceCollection ConfigureIdentity(this IServiceCollection services)
-  {
-    services.AddAuthentication();
+    public static IServiceCollection ConfigureIdentity(this IServiceCollection services)
+    {
+        services.AddAuthentication();
 
-    var builder = services.AddIdentityCore<User>(x => x
-      .User
-      .RequireUniqueEmail = true);
+        var builder = services.AddIdentityCore<User>(ConfigureIdentityOptions);
 
-    builder = new IdentityBuilder(
-      builder.UserType,
-      typeof(IdentityRole),
-      services);
+        builder = new IdentityBuilder(
+          builder.UserType,
+          typeof(IdentityRole),
+          services);
 
-    builder.AddEntityFrameworkStores<GrocerDbContext>().AddDefaultTokenProviders();
+        builder.AddEntityFrameworkStores<GrocerDbContext>().AddDefaultTokenProviders();
 
-    return services;
-  }
+        return services;
+    }
+    private static void ConfigureIdentityOptions(IdentityOptions options)
+    {
+        options.User.RequireUniqueEmail = true;
+
+        //password rules
+        options.Password.RequiredLength = 10;
+    }
 }

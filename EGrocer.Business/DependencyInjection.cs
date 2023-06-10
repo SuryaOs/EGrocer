@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using EGrocer.Business.Categories;
 using EGrocer.Business.Products;
+using EGrocer.Business.Authentication;
 
 namespace EGrocer.Business;
 
@@ -10,7 +11,8 @@ public static class DependencyInjection
     {
         services
             .AddScoped<ICategoryService, CategoryService>()
-            .AddScoped<IProductService, ProductService>();
+            .AddScoped<IProductService, ProductService>()
+            .AddScoped<IAuthenticationService, AuthenticationService>();
 
         return services;
     }
