@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { IProductService, ProductServiceToken } from '../service/product-i.service';
 
 @Component({
   selector: 'app-product',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./summary.component.scss']
 })
 export class ProductComponent implements OnInit {
-
-  constructor() { }
+  test: string;
+  constructor(
+    @Inject(ProductServiceToken)
+    private _productService: IProductService
+  ) { }
 
   ngOnInit() {
+    this.test = this._productService.get();
   }
 
 }
