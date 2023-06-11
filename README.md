@@ -27,15 +27,17 @@ An E-Commerce Web API for Grocery Products where vendors can add, view, edit and
 4) That is the reason I have added Service Layer. we can use it for handling complex business logic, mapping objects, etc..
 5) While configuring Identity Server with AddIdentityCore, SignInManager was throwing dependency exception, so changed it to AddIdentity.
 
-# Current Features
+# .NET Current Features
 1) Entity Framework Core 7
 2) SQL Server
 3) Code First Approach
 4) Global Exception Handling Middleware
 5) Tried to keep clean code
+6) JWT Authentication with IdentityDb
+# .Angular Current Features
+1) Toggling service based on environment
 # Features Planned
-1) JWT Authentication and Authorization with Identity Server
-2) Angular web app
+1) JWT Role based Authorization
 # Optional
 1) Logging with Seri Log
 2) Azure App Configuration/Key vault integration
