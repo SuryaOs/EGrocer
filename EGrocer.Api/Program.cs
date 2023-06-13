@@ -10,10 +10,20 @@ var builder = WebApplication.CreateBuilder(args);
         .AddInfrastructure(builder.Configuration)
         .AddBusiness()
         .AddControllers();
+    builder.Services.AddCors(options =>
+    {
+        options.AddDefaultPolicy(builder =>
+        {
+            builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
+        });
+    });
 }
 
 var app = builder.Build();
 {
+    app.UseCors();
     app.AddSwagger();
     app.AddGlobalErrorHandler();
     app.UseHttpsRedirection();

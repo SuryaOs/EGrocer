@@ -1,2 +1,4 @@
-<p>products works!</p>
-{{test}}
+<div *ngFor="let product of products$ | async">
+  {{product.id}}
+  {{ product.name }}
+</div>
