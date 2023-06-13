@@ -1,13 +1,21 @@
 import { Injectable } from '@angular/core';
 import { IProductService } from './product-i.service';
+import { IProduct } from '../models/product-i';
+import { BaseClientProxy } from 'src/app/core/rest-proxies/baseclient.proxy';
+import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService implements IProductService {
+export class ProductService extends BaseClientProxy implements IProductService {
 
-  constructor() { }
-  get(): string {
-    return "I am from Product Service"
+  constructor(http: HttpClient) {
+      super(http);
+    }
+
+  getAllProducts(): Observable<IProduct[]> {
+    return this.baseGet<IProduct[]>(`${environment.apiUrl}/product`);
   }
 }
