@@ -27,6 +27,7 @@ var app = builder.Build();
     app.AddSwagger();
     app.AddGlobalErrorHandler();
     app.UseHttpsRedirection();
+    app.UseStaticFiles();
     app.UseAuthentication();
     app.UseAuthorization();
     app.MapControllers();

@@ -2,6 +2,7 @@
 using EGrocer.Business.Categories;
 using EGrocer.Business.Products;
 using EGrocer.Business.Authentication;
+using EGrocer.Business.Upload;
 
 namespace EGrocer.Business;
 
@@ -12,7 +13,8 @@ public static class DependencyInjection
         services
             .AddScoped<ICategoryService, CategoryService>()
             .AddScoped<IProductService, ProductService>()
-            .AddScoped<IAuthenticationService, AuthenticationService>();
+            .AddScoped<IAuthenticationService, AuthenticationService>()
+            .AddScoped<IUploadService, UploadService>();
 
         return services;
     }
