@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/cor
 import { IProductService, ProductServiceToken } from '../service/product-i.service';
 import { Observable } from 'rxjs';
 import { IProduct } from '../models/product-i';
+import { FileUploadServiceToken, IFileUploadService } from 'src/app/shared/service/file-upload-i.service';
 
 @Component({
   selector: 'app-product',
@@ -13,11 +14,22 @@ export class ProductComponent implements OnInit {
   products$: Observable<IProduct[]>;
   constructor(
     @Inject(ProductServiceToken)
-    private _productService: IProductService
+    private _productService: IProductService,
+    @Inject(FileUploadServiceToken)
+    private _fileUploadService: IFileUploadService
   ) { }
 
   ngOnInit() {
     this.products$ = this._productService.getAllProducts();
+  }
+
+  onFileChange(event) {
+    console.log(event.target.files[0]);
+    this.uploadImage(event.target.files[0]);
+  }
+
+  uploadImage(arg0: any) {
+    this._fileUploadService.uploadImage(arg0, "product");
   }
 
 }
