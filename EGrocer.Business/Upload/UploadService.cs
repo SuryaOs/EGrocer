@@ -12,22 +12,21 @@ public class UploadService : IUploadService
         _hostingEnvironment = hostingEnvironment;
     }
 
-    public async Task Upload(IFormFile formFile, string filename)
+    public async Task Upload(IFormFile formFile, string featureName)
     {
         var wwwPath = _hostingEnvironment.WebRootPath;
 
-        var filePath = Path.Combine(wwwPath, "images", "product");
+        var filePath = Path.Combine(wwwPath, "images", featureName);
         if(!Directory.Exists(filePath))
             Directory.CreateDirectory(filePath);
 
-        var imagePath = Path.Combine(filePath, filename, ".png");
+        var imagePath = Path.Combine(filePath, formFile.FileName);
+
         if(File.Exists(imagePath))
             File.Delete(imagePath);
 
-        using(FileStream stream = File.Create(imagePath))
-        {
-            await formFile.CopyToAsync(stream);  
-        }
+        using var fileStream = new FileStream(imagePath, FileMode.Create);
+        await formFile.CopyToAsync(fileStream);
 
         return;
     }
