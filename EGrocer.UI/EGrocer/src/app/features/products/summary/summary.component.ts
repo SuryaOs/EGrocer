@@ -24,7 +24,6 @@ export class ProductComponent implements OnInit {
   }
 
   onFileChange(event) {
-    console.log(event.target.files[0]);
     this.uploadImage(event.target.files[0]);
   }
 

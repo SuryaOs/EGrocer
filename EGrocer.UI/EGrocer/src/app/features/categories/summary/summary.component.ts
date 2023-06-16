@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject  } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ICategory } from '../models/category-i';
+import { CategoryServiceToken, ICategoryService } from '../service/category-i.service';
 
 @Component({
   selector: 'app-category',
@@ -6,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./summary.component.scss']
 })
 export class CategoryComponent implements OnInit {
+  category$: Observable<ICategory[]>;
 
-  constructor() { }
+  constructor(
+    @Inject(CategoryServiceToken)
+    private _categoryService: ICategoryService,
+  ) { }
 
   ngOnInit() {
+    this.category$ = this._categoryService.getAllCategory();
   }
-
 }
