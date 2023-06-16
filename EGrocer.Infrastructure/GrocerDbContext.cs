@@ -27,10 +27,10 @@ public class GrocerDbContext : IdentityDbContext<User>
             );
 
         modelBuilder.Entity<Product>().HasData(
-            new Product { Id = 1, Name = "Beverages One", Description = "Beverages one is super healthy drink", Price = 50, CategoryId = 1 },
-            new Product { Id = 2, Name = "Apple", Description = "Apple a day, keeps doctor away", Price = 30, CategoryId = 2 },
-            new Product { Id = 3, Name = "Oats", Description = "Oats are quickwin for breakfast", Price = 25, CategoryId = 3 },
-            new Product { Id = 4, Name = "Kiwi", Description = "Eat Kiwi, Fly Kiwi", Price = 30, CategoryId = 2 }
+            new Product { Id = 1, Name = "Beverages One", Description = "Beverages one is super healthy drink", Price = 50, ImageName="beverageone.jpg", CategoryId = 1 },
+            new Product { Id = 2, Name = "Apple", Description = "Apple a day, keeps doctor away", Price = 30, ImageName="apple.jpg", CategoryId = 2 },
+            new Product { Id = 3, Name = "Oats", Description = "Oats are quickwin for breakfast", Price = 25,ImageName="oats.jpg", CategoryId = 3 },
+            new Product { Id = 4, Name = "Kiwi", Description = "Eat Kiwi, Fly Kiwi", Price = 30, ImageName="kiwi.jpg", CategoryId = 2 }
             );
     }
 }
