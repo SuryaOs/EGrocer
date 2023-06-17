@@ -1,28 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ProductComponent } from './features/product/summary/summary.component';
-import { ProductDetailsComponent } from './features/product/details/details.component';
-import { CategoryComponent } from './features/category/summary/summary.component';
-import { CategoryDetailsComponent } from './features/category/details/details.component';
+import { AppComponent } from './app.component';
 
 
 const routes: Routes = [
-  {
-    path: 'product',
-    component: ProductComponent,
-  },
-  {
-    path: 'product/:id',
-    component: ProductDetailsComponent,
-  },
-  {
-    path: 'category',
-    component: CategoryComponent,
-  },
-  {
-    path: 'category/:id',
-    component: CategoryDetailsComponent,
-  }
+  { path: '', component: AppComponent},
+  { path: 'product', loadChildren: () => import('./features/product/product.module').then(m => m.ProductModule) },
+  { path: 'category', loadChildren: () => import('./features/category/category.module').then(m => m.CategoryModule) },
 ];
 
 @NgModule({
@@ -30,4 +14,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const RoutingComponents = [ProductComponent, CategoryComponent, ProductDetailsComponent, CategoryDetailsComponent]
+
