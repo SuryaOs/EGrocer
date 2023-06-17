@@ -4,9 +4,8 @@ import { AppComponent } from './app.component';
 
 
 const routes: Routes = [
-  { path: '', component: AppComponent},
-  { path: 'product', loadChildren: () => import('./features/product/product.module').then(m => m.ProductModule) },
-  { path: 'category', loadChildren: () => import('./features/category/category.module').then(m => m.CategoryModule) },
+  { path: '', redirectTo: 'product-category', pathMatch: 'full' },
+  { path: 'product-category', loadChildren: () => import('./features/product-category-page/product-category-page.module').then(m => m.ProductCategoryPageModule) },
 ];
 
 @NgModule({

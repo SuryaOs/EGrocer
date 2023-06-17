@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject, ChangeDetectionStrategy  } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ICategory } from '../models/category-i';
-import { CategoryServiceToken, ICategoryService } from '../service/category-i.service';
+import { ICategory } from '../../models/category-i';
+import { CategoryServiceToken, ICategoryService } from '../../service/category-i.service';
 
 @Component({
   selector: 'app-category',
