@@ -40,7 +40,9 @@ An E-Commerce Web API for Grocery Products where vendors can add, view, edit and
 3) Reactive Programming
 # Problems Faced in Angular
 1) I imported ProductModule and CategoryModule while creating Parent Module (Product-Category), but when I added app-category Selector component in P-C page, it threw component is not known element. (The reason for this is that I have not exported components from the respective modules (categoryComponent in category module).
-# Features Planned
+# Clarifications in Angular
+1) Modules for Category and Product are not required because we are eagerly loading it in Parent Module (P-C). However, I have added so that it will adhere to the Single Responsibility Design (SRD). I'm not sure which is the best practise right now.
+# Features Planned 
 1) JWT Role based Authorization
 # Optional
 1) Logging with Seri Log
