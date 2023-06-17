@@ -1,2 +1,2 @@
-<app-category></app-category>
-<app-product></app-product>
+<app-category (selectedCategory)="selectedCategoryId = $event"></app-category>
+<app-product [categoryId]="selectedCategoryId"></app-product>

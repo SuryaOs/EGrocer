@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, ChangeDetectionStrategy  } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ICategory } from '../../models/category-i';
 import { CategoryServiceToken, ICategoryService } from '../../service/category-i.service';
@@ -10,7 +10,9 @@ import { CategoryServiceToken, ICategoryService } from '../../service/category-i
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CategoryComponent implements OnInit {
-  category$: Observable<ICategory[]>;
+  @Output() selectedCategory = new EventEmitter<number>();
+
+  public category$: Observable<ICategory[]>;
 
   constructor(
     @Inject(CategoryServiceToken)
@@ -19,5 +21,9 @@ export class CategoryComponent implements OnInit {
 
   ngOnInit() {
     this.category$ = this._categoryService.getAllCategory();
+  }
+
+  public onCategorySelect(categoryId: number): void {
+    this.selectedCategory.emit(categoryId);
   }
 }
