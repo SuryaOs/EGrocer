@@ -34,8 +34,12 @@ An E-Commerce Web API for Grocery Products where vendors can add, view, edit and
 4) Global Exception Handling Middleware
 5) Tried to keep clean code
 6) JWT Authentication with IdentityDb
-# .Angular Current Features
+# Angular Current Features
 1) Toggling service based on environment
+2) Feature Modules
+3) Reactive Programming
+# Problems Faced in Angular
+1) I imported ProductModule and CategoryModule while creating Parent Module (Product-Category), but when I added app-category Selector component in P-C page, it threw component is not known element. (The reason for this is that I have not exported components from the respective modules (categoryComponent in category module).
 # Features Planned
 1) JWT Role based Authorization
 # Optional
