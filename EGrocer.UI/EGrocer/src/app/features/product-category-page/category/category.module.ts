@@ -9,6 +9,7 @@ import { CategoryRoutingModule, RoutingComponents } from './category-routing.mod
   imports: [
     CommonModule,
     CategoryRoutingModule
-  ]
+  ],
+  exports: [RoutingComponents]
 })
 export class CategoryModule { }

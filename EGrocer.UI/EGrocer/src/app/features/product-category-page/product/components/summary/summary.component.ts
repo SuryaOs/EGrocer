@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
-import { IProductService, ProductServiceToken } from '../service/product-i.service';
+import { IProductService, ProductServiceToken } from '../../service/product-i.service';
 import { Observable } from 'rxjs';
-import { IProduct } from '../models/product-i';
+import { IProduct } from '../../models/product-i';
 import { FileUploadServiceToken, IFileUploadService } from 'src/app/shared/service/file-upload-i.service';
 
 @Component({

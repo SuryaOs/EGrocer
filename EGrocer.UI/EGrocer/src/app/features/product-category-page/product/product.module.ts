@@ -11,6 +11,7 @@ import { ProductRoutingModule, RoutingComponents } from './product-routing.modul
   imports: [
     CommonModule,
     ProductRoutingModule
-  ]
+  ],
+  exports: [RoutingComponents]
 })
 export class ProductModule { }
