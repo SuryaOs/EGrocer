@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject  } from '@angular/core';
+import { Component, OnInit, Inject, ChangeDetectionStrategy  } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ICategory } from '../models/category-i';
 import { CategoryServiceToken, ICategoryService } from '../service/category-i.service';
@@ -6,7 +6,8 @@ import { CategoryServiceToken, ICategoryService } from '../service/category-i.se
 @Component({
   selector: 'app-category',
   templateUrl: './summary.component.html',
-  styleUrls: ['./summary.component.scss']
+  styleUrls: ['./summary.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CategoryComponent implements OnInit {
   category$: Observable<ICategory[]>;
