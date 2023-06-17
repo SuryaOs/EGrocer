@@ -17,7 +17,8 @@ export class ProductMockService implements IProductService {
         "price": 50,
         "description": "Beverages one is super healthy drink",
         "categoryId": 1,
-        "category": null
+        "category": null,
+        "imageName":"",
       },
       {
         "id": 2,
@@ -25,7 +26,8 @@ export class ProductMockService implements IProductService {
         "price": 30,
         "description": "Apple a day, keeps doctor away",
         "categoryId": 2,
-        "category": null
+        "category": null,
+        "imageName":"",
       },
       {
         "id": 3,
@@ -33,7 +35,8 @@ export class ProductMockService implements IProductService {
         "price": 25,
         "description": "Oats are quickwin for breakfast",
         "categoryId": 3,
-        "category": null
+        "category": null,
+        "imageName":""
       },
       {
         "id": 4,
@@ -41,7 +44,8 @@ export class ProductMockService implements IProductService {
         "price": 30,
         "description": "Eat Kiwi, Fly Kiwi",
         "categoryId": 2,
-        "category": null
+        "category": null,
+        "imageName":""
       }
     ])
   }

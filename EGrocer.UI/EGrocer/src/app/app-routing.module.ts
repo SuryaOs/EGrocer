@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ProductComponent } from './features/products/summary/summary.component';
-import { ProductDetailsComponent } from './features/products/details/details.component';
-import { CategoryComponent } from './features/categories/summary/summary.component';
-import { CategoryDetailsComponent } from './features/categories/details/details.component';
+import { ProductComponent } from './features/product/summary/summary.component';
+import { ProductDetailsComponent } from './features/product/details/details.component';
+import { CategoryComponent } from './features/category/summary/summary.component';
+import { CategoryDetailsComponent } from './features/category/details/details.component';
 
 
 const routes: Routes = [
   {
-    path: 'products',
+    path: 'product',
     component: ProductComponent,
   },
   {
-    path: 'products/:id',
+    path: 'product/:id',
     component: ProductDetailsComponent,
   },
   {
