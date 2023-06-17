@@ -49,4 +49,24 @@ export class ProductMockService implements IProductService {
       }
     ])
   }
+  getProduct(categoryId: number): Observable<IProduct[]> {
+    return of([
+      {
+          "id": 2,
+          "name": "Apple",
+          "price": 30,
+          "description": "Apple a day, keeps doctor away",
+          "imageName": "apple.jpg",
+          "categoryId": 2,
+      },
+      {
+          "id": 4,
+          "name": "Kiwi",
+          "price": 30,
+          "description": "Eat Kiwi, Fly Kiwi",
+          "imageName": "kiwi.jpg",
+          "categoryId": 2,
+      }
+  ])
+  }
 }

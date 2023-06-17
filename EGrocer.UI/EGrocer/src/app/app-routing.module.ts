@@ -1,28 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ProductComponent } from './features/product/summary/summary.component';
-import { ProductDetailsComponent } from './features/product/details/details.component';
-import { CategoryComponent } from './features/category/summary/summary.component';
-import { CategoryDetailsComponent } from './features/category/details/details.component';
+import { AppComponent } from './app.component';
 
 
 const routes: Routes = [
-  {
-    path: 'product',
-    component: ProductComponent,
-  },
-  {
-    path: 'product/:id',
-    component: ProductDetailsComponent,
-  },
-  {
-    path: 'category',
-    component: CategoryComponent,
-  },
-  {
-    path: 'category/:id',
-    component: CategoryDetailsComponent,
-  }
+  { path: '', redirectTo: 'product-category', pathMatch: 'full' },
+  { path: 'product-category', loadChildren: () => import('./features/product-category-page/product-category-page.module').then(m => m.ProductCategoryPageModule) },
 ];
 
 @NgModule({
@@ -30,4 +13,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
-export const RoutingComponents = [ProductComponent, CategoryComponent, ProductDetailsComponent, CategoryDetailsComponent]
+
