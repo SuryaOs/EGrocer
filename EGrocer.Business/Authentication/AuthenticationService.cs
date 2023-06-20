@@ -1,4 +1,4 @@
-using EGrocer.Infrastructure.Common.Authentication;
+using EGrocer.Core.Users;
 using Microsoft.AspNetCore.Identity;
 
 namespace EGrocer.Business.Authentication;

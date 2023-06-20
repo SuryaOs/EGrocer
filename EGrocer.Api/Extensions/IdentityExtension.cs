@@ -1,5 +1,5 @@
+using EGrocer.Core.Users;
 using EGrocer.Infrastructure;
-using EGrocer.Infrastructure.Common.Authentication;
 using Microsoft.AspNetCore.Identity;
 
 namespace EGrocer.Api.Extensions;
