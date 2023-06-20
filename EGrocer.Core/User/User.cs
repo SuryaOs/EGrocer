@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace EGrocer.Infrastructure.Common.Authentication;
+namespace EGrocer.Core.Users;
 
 public class User: IdentityUser
 {
