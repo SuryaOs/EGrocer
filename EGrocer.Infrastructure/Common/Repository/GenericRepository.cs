@@ -34,5 +34,10 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
     public void Update(T entity) => _dbSet.Update(entity);
 
     public void UpdateRange(IEnumerable<T> entities) => _dbSet.UpdateRange(entities);
+    public void ExecuteSqlCommand(string sqlCommand)
+    {
+        _dbContext.Database.ExecuteSqlRaw(sqlCommand);
+    }
+
 
 }

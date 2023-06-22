@@ -12,12 +12,12 @@ public class OrderDetails
 
      // one to one relationship, foreign key
     public int StatusId { get; set; }
-    public required Status Status { get; set; }
+    public Status? Status { get; set; }
     // one to one relationship, foreign key
     public int ProductId { get; set; }
-    public required Product Product { get; set; }
+    public Product? Product { get; set; }
 
    // one to one relationship, foreign key
     public int OrderId { get; set; }
-    public required Order Order { get; set; }
+    public Order? Order { get; set; }
 }
