@@ -19,7 +19,6 @@ public class OrderDetailsService: IOrderDetailsService
         });
 
         await _unitOfWork.OrderDetails.AddRangeAsync(orderDetails);
-        await _unitOfWork.Save();
 
         return orderDetails.First().Id > 0;;
     }

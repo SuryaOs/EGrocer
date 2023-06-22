@@ -1,4 +1,4 @@
-using EGrocer.Business.Orders;
+using EGrocer.Business.Products;
 using EGrocer.Core.Common;
 using EGrocer.Core.Orders;
 
@@ -7,38 +7,42 @@ public class OrderService : IOrderService
 {
     private readonly IUnitOfWork _unitOfWork;
     private readonly IOrderDetailsService _orderDetailsService;
-    public OrderService(IUnitOfWork unitOfWork, IOrderDetailsService orderDetailsService)
+    private readonly IProductService _productService;
+    public OrderService(IUnitOfWork unitOfWork, IOrderDetailsService orderDetailsService, IProductService productService)
     {
         _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
         _orderDetailsService = orderDetailsService ?? throw new ArgumentNullException(nameof(orderDetailsService));
+        _productService = productService ?? throw new ArgumentNullException(nameof(productService));
     }
     public async Task<bool> Create(AddOrderRequest orderRequest)
     {
-        using (var transaction = await _unitOfWork.BeginTransactionAsync())
+        using var transaction = await _unitOfWork.BeginTransactionAsync();
+        try
         {
-            try
+            var order = new Order()
             {
-                var order = new Order()
-                {
-                    TotalPrice = orderRequest.TotalPrice,
-                    TotalItem = orderRequest.TotalItem,
-                    PlacedDate = DateTime.UtcNow,
-                    UserAddressId = orderRequest.UserAddressId
-                };
+                TotalPrice = orderRequest.TotalPrice,
+                TotalItem = orderRequest.TotalItem,
+                PlacedDate = DateTime.UtcNow,
+                UserAddressId = orderRequest.UserAddressId
+            };
 
-                await _unitOfWork.Order.AddAsync(order);
-                await _unitOfWork.Save();
+            await _unitOfWork.Order.AddAsync(order);
+            await _unitOfWork.Save();
 
-                await _orderDetailsService.Create(order.Id, orderRequest.OrderDetailsRequest);
+            await _orderDetailsService.Create(order.Id, orderRequest.OrderDetailsRequest);
 
-                await transaction.CommitAsync();
-                return true;
-                
-            } catch (Exception ex)
-            {
-                await transaction.RollbackAsync();
-                throw;
-            }
+            await _productService.Update(orderRequest.OrderDetailsRequest);
+
+            await transaction.CommitAsync();
+
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            await transaction.RollbackAsync();
+            throw;
         }
     }
 }
