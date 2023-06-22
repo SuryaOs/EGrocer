@@ -372,3 +372,4 @@ Requests/Product/GetByProduct.http
 .vscode/tasks.json
 Requests/Authentication/login.http
 Requests/Authentication/register.http
+Requests/Order/Create.http

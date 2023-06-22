@@ -1,4 +1,3 @@
-using EGrocer.Core.Products;
 using EGrocer.Core.Users;
 
 namespace EGrocer.Core.Orders;
@@ -7,6 +6,7 @@ public class Order
 {
     public int Id { get; set; }
     public int TotalPrice { get; set; }
+    public int TotalItem { get; set; }
     public DateTime PlacedDate { get; set; }
     public DateTime DeliveredDate { get; set; }
 

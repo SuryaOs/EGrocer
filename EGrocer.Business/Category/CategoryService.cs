@@ -26,7 +26,7 @@ public class CategoryService : ICategoryService
         };
 
         await _unitOfWork.Category.AddAsync(category);
-        var rowsAdded = _unitOfWork.Save();
+        var rowsAdded = await _unitOfWork.Save();
 
         return rowsAdded > 0;
     }
@@ -40,7 +40,7 @@ public class CategoryService : ICategoryService
         category.Description = categoryRequest.Description;
 
         _unitOfWork.Category.Update(category);
-        var rowsUpdated = _unitOfWork.Save();
+        var rowsUpdated = await _unitOfWork.Save();
 
         return rowsUpdated > 0;
     }
@@ -51,7 +51,7 @@ public class CategoryService : ICategoryService
             return null;
 
             _unitOfWork.Category.Delete(categoryDetails);
-            var rowsDeleted = _unitOfWork.Save();
+            var rowsDeleted = await _unitOfWork.Save();
             return rowsDeleted > 0;
     }
 }
