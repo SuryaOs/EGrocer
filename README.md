@@ -34,6 +34,7 @@ An E-Commerce Web API for Grocery Products where vendors can add, view, edit and
 4) Global Exception Handling Middleware
 5) Tried to keep clean code
 6) JWT Authentication with IdentityDb
+7) Database Transaction
 # Angular Current Features
 1) Toggling service based on environment
 2) Feature Modules - Lazy Loading
