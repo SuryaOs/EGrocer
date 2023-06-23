@@ -43,6 +43,7 @@ An E-Commerce Web API for Grocery Products where vendors can add, view, edit and
 1) I imported ProductModule and CategoryModule while creating Parent Module (Product-Category), but when I added app-category Selector component in P-C page, it threw component is not known element. (The reason for this is that I have not exported components from the respective modules (categoryComponent in category module).
 # Clarifications in Angular
 1) Modules for Category and Product are not required because we are eagerly loading it in Parent Module (P-C). However, I have added so that it will adhere to the Single Responsibility Design (SRD). I'm not sure which is the best practise right now.
+2) I have added IProduct Interface in HTTP Get Calls, but I can see there are additional properties in the response that are not declared in IProduct interface. Shouln't it prevent it ? Why it is not doing ?
 # Features Planned 
 1) JWT Role based Authorization
 # Optional
