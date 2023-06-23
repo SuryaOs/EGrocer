@@ -8,5 +8,6 @@ export const ProductServiceToken = new InjectionToken<IProductService>(
 
 export interface IProductService{
   getAllProducts(): Observable<IProduct[]>;
-  getProduct(categoryId: number): Observable<IProduct[]>
-;}
+  getProductByCategoryId(categoryId: number): Observable<IProduct[]>;
+  getProductByProductId(productId: number): Observable<IProduct>;
+}

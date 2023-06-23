@@ -21,9 +21,15 @@ export class ProductService extends BaseClientProxy implements IProductService {
       map(products => products.map(this.modifyProductImage))
     );
   }
-  getProduct(categoryId: number): Observable<IProduct[]> {
+  getProductByCategoryId(categoryId: number): Observable<IProduct[]> {
     return this.baseGet<IProduct[]>(`${environment.apiUrl}/product/getByCategory/${categoryId}`).pipe(
       map(products => products.map(this.modifyProductImage))
+      );
+  }
+
+  getProductByProductId(productId: number): Observable<IProduct> {
+    return this.baseGet<IProduct>(`${environment.apiUrl}/product/getByProduct/${productId}`).pipe(
+      map(this.modifyProductImage)
       );
   }
 
