@@ -5,5 +5,5 @@ export const FileUploadServiceToken = new InjectionToken<IFileUploadService>(
 );
 
 export interface IFileUploadService{
-  uploadImage(file, featureName): any;
+  uploadImage(file:any, featureName: string): any;
 }

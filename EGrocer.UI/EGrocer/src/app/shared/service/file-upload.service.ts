@@ -6,7 +6,7 @@ export class FileUploadService implements IFileUploadService {
   constructor(public http: HttpClient) {
   }
 
- public uploadImage(file, featureName) {
+ public uploadImage(file: any, featureName: string) {
     const formData: FormData = new FormData();
 
     formData.append('file', file);

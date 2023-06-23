@@ -12,7 +12,7 @@ import { CategoryServiceToken, ICategoryService } from '../../service/category-i
 export class CategoryComponent implements OnInit {
   @Output() selectedCategory = new EventEmitter<number>();
 
-  public category$: Observable<ICategory[]>;
+  public category$!: Observable<ICategory[]>;
 
   constructor(
     @Inject(CategoryServiceToken)

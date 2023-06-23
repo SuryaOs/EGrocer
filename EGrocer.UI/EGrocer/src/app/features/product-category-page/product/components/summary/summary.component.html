@@ -1,7 +1,9 @@
 <div *ngFor="let product of products$ | async">
   {{ product.id}}
   {{ product.name }}
+  {{ product.availableQuantity}}
   <img [src]="product.imageName" height="50" width="50">
+  <button type="button" (click)="checkout(product.id)">Check Out!</button>
 </div>
 <!-- <div>
   <input type="file" (change)="onFileChange($event)"/>

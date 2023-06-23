@@ -7,7 +7,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductCategoryPageComponent implements OnInit {
-  public selectedCategoryId: number;
+  public selectedCategoryId!: number;
 
   constructor() { }
 

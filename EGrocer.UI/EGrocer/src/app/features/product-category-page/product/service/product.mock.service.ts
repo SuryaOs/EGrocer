@@ -49,7 +49,7 @@ export class ProductMockService implements IProductService {
       }
     ])
   }
-  getProduct(categoryId: number): Observable<IProduct[]> {
+  getProductByCategoryId(categoryId: number): Observable<IProduct[]> {
     return of([
       {
           "id": 2,
@@ -68,5 +68,15 @@ export class ProductMockService implements IProductService {
           "categoryId": 2,
       }
   ])
+  }
+  getProductByProductId(productId: number): Observable<IProduct> {
+    return of({
+          "id": 4,
+          "name": "Kiwi",
+          "price": 30,
+          "description": "Eat Kiwi, Fly Kiwi",
+          "imageName": "kiwi.jpg",
+          "categoryId": 2,
+      })
   }
 }
