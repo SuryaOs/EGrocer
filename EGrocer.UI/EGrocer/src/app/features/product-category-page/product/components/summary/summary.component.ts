@@ -1,28 +1,45 @@
-import { ChangeDetectionStrategy, Component, Inject, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { IProductService, ProductServiceToken } from '../../service/product-i.service';
-import { Observable } from 'rxjs';
-import { IProduct } from '../../models/product-i';
-import { FileUploadServiceToken, IFileUploadService } from 'src/app/shared/service/file-upload-i.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from "@angular/core";
+import {
+  IProductService,
+  ProductServiceToken,
+} from "../../service/product-i.service";
+import { Observable } from "rxjs";
+import { IProduct } from "../../models/product-i";
+import {
+  FileUploadServiceToken,
+  IFileUploadService,
+} from "src/app/shared/service/file-upload/file-upload-i.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { CartService } from "src/app/shared/service/quantity/cart.service";
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './summary.component.html',
-  styleUrls: ['./summary.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  selector: "app-product",
+  templateUrl: "./summary.component.html",
+  styleUrls: ["./summary.component.scss"],
 })
 export class ProductComponent implements OnInit, OnChanges {
-  products$!: Observable<IProduct[]>;
+  // products$!: Observable<IProduct[]>;
+  products!: IProduct[];
   @Input() categoryId!: number;
+  productQuantities: { [productId: number]: number } = {};
 
   constructor(
     @Inject(ProductServiceToken)
     private _productService: IProductService,
     @Inject(FileUploadServiceToken)
     private _fileUploadService: IFileUploadService,
+    public _cartService: CartService,
     private router: Router,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.loadProducts();
@@ -36,23 +53,53 @@ export class ProductComponent implements OnInit, OnChanges {
   }
 
   private loadProducts(categoryId?: number): void {
-    if(categoryId == undefined)
-      this.products$ = this._productService.getAllProducts();
-    else
-      this.products$ = this._productService.getProductByCategoryId(categoryId);
+    if (categoryId == undefined) {
+      this._productService.getAllProducts().subscribe((product: IProduct[]) => {
+        this.products = product;
+        //initialing dictionary with key value pairs
+        this.products.forEach(
+          (product) => (this.productQuantities[product.id] = 0)
+        );
+      });
+    } else
+      this._productService
+        .getProductByCategoryId(categoryId)
+        .subscribe((product: IProduct[]) => {
+          this.products = product;
+        });
   }
 
-  onFileChange(event: any) {
-    this.uploadImage(event.target.files[0]);
+  incrementQuantity(product: IProduct): void {
+    const updatedQuantity = ++this.productQuantities[product.id];
+    if (updatedQuantity > product.availableQuantity) {
+      const updatedQuantity = --this.productQuantities[product.id];
+      window.alert(`max quantity ${updatedQuantity} exceeded`);
+    } else
+      this._cartService.addToCart(product, this.productQuantities[product.id]);
   }
 
-  uploadImage(arg0: any) {
-    this._fileUploadService.uploadImage(arg0, "product");
+  decrementQuantity(product: IProduct): void {
+    const updatedQuantity = --this.productQuantities[product.id];
+    if (updatedQuantity === -1) {
+      window.alert("Quantity should not be negative");
+      this.productQuantities[product.id]++;
+    } else if (updatedQuantity > 0) {
+      this.productQuantities[product.id] = updatedQuantity;
+      this._cartService.addToCart(product, updatedQuantity);
+    } else {
+      this._cartService.removeFromCart(product);
+    }
   }
 
-  checkout(productId: number): void {
-    this.router.navigate(['checkout', productId], { relativeTo: this.route });
+  // onFileChange(event: any) {
+  //   this.uploadImage(event.target.files[0]);
+  // }
 
-  }
+  // uploadImage(arg0: any) {
+  //   this._fileUploadService.uploadImage(arg0, "product");
+  // }
 
+  // checkout(productId: number): void {
+  //   this.router.navigate(['checkout', productId], { relativeTo: this.route });
+  // }
 }

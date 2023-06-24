@@ -2,8 +2,8 @@ import { CategoryServiceToken } from "src/app/features/product-category-page/cat
 import { CategoryMockService } from "src/app/features/product-category-page/category/service/category.mock.service";
 import { ProductServiceToken } from "src/app/features/product-category-page/product/service/product-i.service";
 import { ProductMockService } from "src/app/features/product-category-page/product/service/product.mock.service";
-import { FileUploadServiceToken } from "src/app/shared/service/file-upload-i.service";
-import { FileUploadMockService } from "src/app/shared/service/file-upload.mock.service";
+import { FileUploadServiceToken } from "src/app/shared/service/file-upload/file-upload-i.service";
+import { FileUploadMockService } from "src/app/shared/service/file-upload/file-upload.mock.service";
 
 export const restServices = [
   { provide: ProductServiceToken, useClass: ProductMockService},

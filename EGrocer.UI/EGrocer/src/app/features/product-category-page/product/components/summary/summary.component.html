@@ -1,10 +1,15 @@
-<div *ngFor="let product of products$ | async">
+<div *ngFor="let product of products">
   {{ product.id}}
   {{ product.name }}
-  {{ product.availableQuantity}}
   <img [src]="product.imageName" height="50" width="50">
-  <button type="button" (click)="checkout(product.id)">Check Out!</button>
+  <p><span (click)="incrementQuantity(product)"><b>+</b></span> {{ productQuantities[product.id] }} <span
+      (click)="decrementQuantity(product)"><b>-</b></span></p>
+  <!-- <button type="button" (click)="checkout(product.id)">Check Out!</button> -->
 </div>
 <!-- <div>
   <input type="file" (change)="onFileChange($event)"/>
 </div> -->
+
+
+---Cart List---
+<h1>{{_cartService.getCartCount()}}</h1>
