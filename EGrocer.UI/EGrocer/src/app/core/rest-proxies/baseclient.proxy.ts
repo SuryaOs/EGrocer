@@ -12,9 +12,9 @@ export class BaseClientProxy {
     });
   }
 
-  public basePost<T>(serviceUrl: string, body: T): Observable<T> {
-    return new Observable<T>((observer) => {
-      this.http.post<T>(serviceUrl, body).subscribe((response) => {
+  public basePost<TRequest,TResponse>(serviceUrl: string, body: TRequest): Observable<TResponse> {
+    return new Observable<TResponse>((observer) => {
+      this.http.post<TResponse>(serviceUrl, body).subscribe((response) => {
         observer.next(response);
       });
     });

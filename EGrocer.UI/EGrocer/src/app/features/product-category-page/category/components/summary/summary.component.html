@@ -1,3 +1,9 @@
+<!-- "All" category -->
+<div (click)="onCategorySelect(0)">
+  All
+</div>
+
+<!-- Category list -->
 <div *ngFor="let category of category$ | async" (click)="onCategorySelect(category.id)">
   {{ category.name }}
 </div>
