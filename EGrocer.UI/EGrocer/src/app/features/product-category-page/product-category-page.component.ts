@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   selector: 'app-product-category-page',
   templateUrl: './product-category-page.component.html',
   styleUrls: ['./product-category-page.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  //changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductCategoryPageComponent implements OnInit {
   public selectedCategoryId!: number;

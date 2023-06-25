@@ -18,7 +18,7 @@ import {
   IFileUploadService,
 } from "src/app/shared/service/file-upload/file-upload-i.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { CartService } from "src/app/shared/service/quantity/cart.service";
+import { CartService } from "src/app/shared/service/cart/cart.service";
 
 @Component({
   selector: "app-product",
@@ -52,11 +52,17 @@ export class ProductComponent implements OnInit, OnChanges {
     }
   }
 
+  navigateToCheckoutPage(): void {
+    this.router.navigate(['checkout']);
+  }
+
   private loadProducts(categoryId?: number): void {
-    if (categoryId == undefined) {
+    if (categoryId == undefined || categoryId == 0) {
       this._productService.getAllProducts().subscribe((product: IProduct[]) => {
         this.products = product;
         //initialing dictionary with key value pairs
+        const isEmpty = Object.keys(this.productQuantities).length === 0;
+        if(isEmpty)
         this.products.forEach(
           (product) => (this.productQuantities[product.id] = 0)
         );
@@ -70,12 +76,12 @@ export class ProductComponent implements OnInit, OnChanges {
   }
 
   incrementQuantity(product: IProduct): void {
-    const updatedQuantity = ++this.productQuantities[product.id];
+    let updatedQuantity = ++this.productQuantities[product.id];
     if (updatedQuantity > product.availableQuantity) {
-      const updatedQuantity = --this.productQuantities[product.id];
+      updatedQuantity = --this.productQuantities[product.id];
       window.alert(`max quantity ${updatedQuantity} exceeded`);
     } else
-      this._cartService.addToCart(product, this.productQuantities[product.id]);
+      this._cartService.addToCart(product, updatedQuantity);
   }
 
   decrementQuantity(product: IProduct): void {

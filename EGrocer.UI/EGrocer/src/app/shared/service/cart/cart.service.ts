@@ -41,4 +41,14 @@ export class CartService {
     return this.cartListSubject.getValue().length;
   }
 
+  public getTotalItems(): number {
+    const cartList = this.cartListSubject.getValue();
+    return cartList.length;
+  }
+
+  public getTotalPrice(): number {
+    const cartList = this.cartListSubject.getValue();
+    return cartList.reduce((total, cart) => total + (cart.quantity * cart.product.price), 0);
+  }
+
 }

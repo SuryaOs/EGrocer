@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CheckoutComponent } from './checkout.component';
+import { SummaryComponent } from './components/summary/summary.component';
+import { PriceDetailsComponent } from './components/price-details/price-details.component';
 
 
 const routes: Routes = [
@@ -12,4 +14,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class CheckoutRoutingModule { }
-export const RoutingComponents = [CheckoutComponent]
+export const RoutingComponents = [CheckoutComponent, SummaryComponent, PriceDetailsComponent]

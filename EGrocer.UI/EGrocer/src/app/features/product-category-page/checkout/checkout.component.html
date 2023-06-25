@@ -1,7 +1,2 @@
-<div *ngIf="product$ | async as product">
-  <img [src]="product.imageName" height="50" width="50">
-  <p>{{ product.name }}</p>
-  <p>{{ product.description }}</p>
-  <p>{{ product.price }}</p>
-</div>
-<button (click)="placeOrder()">Place Order</button>
+<app-summary></app-summary>
+<app-price-details></app-price-details>
