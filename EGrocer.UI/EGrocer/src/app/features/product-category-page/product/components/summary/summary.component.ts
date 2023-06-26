@@ -26,7 +26,6 @@ import { CartService } from "src/app/shared/service/cart/cart.service";
   styleUrls: ["./summary.component.scss"],
 })
 export class ProductComponent implements OnInit, OnChanges {
-  // products$!: Observable<IProduct[]>;
   products!: IProduct[];
   @Input() categoryId!: number;
   productQuantities: { [productId: number]: number } = {};
@@ -37,7 +36,6 @@ export class ProductComponent implements OnInit, OnChanges {
     @Inject(FileUploadServiceToken)
     private _fileUploadService: IFileUploadService,
     public _cartService: CartService,
-    private router: Router,
     private route: ActivatedRoute
   ) {}
 
@@ -50,10 +48,6 @@ export class ProductComponent implements OnInit, OnChanges {
       const categoryId = changes.categoryId.currentValue;
       this.loadProducts(categoryId);
     }
-  }
-
-  navigateToCheckoutPage(): void {
-    this.router.navigate(['checkout']);
   }
 
   private loadProducts(categoryId?: number): void {
