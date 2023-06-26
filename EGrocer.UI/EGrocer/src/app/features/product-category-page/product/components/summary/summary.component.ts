@@ -50,6 +50,10 @@ export class ProductComponent implements OnInit, OnChanges {
     }
   }
 
+  navigateToCheckoutPage(): void {
+    this.router.navigate(['checkout']);
+  }
+
   private loadProducts(categoryId?: number): void {
     if (categoryId == undefined || categoryId == 0) {
       this._productService.getAllProducts().subscribe((product: IProduct[]) => {
