@@ -7,11 +7,13 @@ public class AuthenticationService : IAuthenticationService
 {
     private readonly UserManager<User> _userManager;
     private readonly SignInManager<User> _signInManager;
+    private readonly RoleManager<IdentityRole> _roleManager;
 
-    public AuthenticationService(UserManager<User> userManager, SignInManager<User> signInManager)
+    public AuthenticationService(UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<IdentityRole> roleManager)
     {
         _userManager = userManager;
         _signInManager = signInManager;
+        _roleManager = roleManager;
     }
 
     public async Task<bool> Register(RegisterRequest userRequest)
@@ -26,7 +28,18 @@ public class AuthenticationService : IAuthenticationService
         };
 
         var result = await _userManager.CreateAsync(user, userRequest.Password);
-        return result.Succeeded;
+
+        if(result.Succeeded)
+        {
+            var defaultRole = await _roleManager.FindByNameAsync("Viewer");
+
+            if (defaultRole != null)
+            {
+                var roleResult = await _userManager.AddToRoleAsync(user, defaultRole.Name);
+                return roleResult.Succeeded;
+            }
+        }
+        return false;
     }
 
     public async Task<bool> Login(LoginRequest userRequest)

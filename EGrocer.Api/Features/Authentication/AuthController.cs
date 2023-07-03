@@ -39,7 +39,7 @@ public class AuthController : ControllerBase
         if (!login)
             throw new UnauthorizedException("Invalid Email or Password");
 
-        var tokenString = _jwtTokenGenerator.GenerateToken(userRequest.Email);
+        var tokenString = await _jwtTokenGenerator.GenerateToken(userRequest.Email);
 
         return Ok(tokenString);
     }

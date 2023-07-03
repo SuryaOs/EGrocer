@@ -15,7 +15,7 @@ public class CategoryController : ControllerBase
     {
         _categoryService = categoryService;
     }
-    [HttpGet]
+    [HttpGet, Authorize(Roles = "Administrator")]
     public async Task<IActionResult> Get()
     {
         var categories = await _categoryService.GetAll();
