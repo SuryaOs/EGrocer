@@ -2,5 +2,5 @@ namespace EGrocer.Core.Common.Authentication;
 
 public interface IJwtTokenGenerator
 {
-    string GenerateToken(string Email);
+    Task<string> GenerateToken(string Email);
 }

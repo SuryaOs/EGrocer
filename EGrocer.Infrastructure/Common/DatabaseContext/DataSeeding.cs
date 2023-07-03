@@ -1,6 +1,7 @@
 ﻿using EGrocer.Core.Categories;
 using EGrocer.Core.Common.Entities;
 using EGrocer.Core.Products;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace EGrocer.Infrastructure.DataSeeding
@@ -12,6 +13,7 @@ namespace EGrocer.Infrastructure.DataSeeding
             SeedCategories(modelBuilder);
             SeedProducts(modelBuilder);
             SeedStatuses(modelBuilder);
+            SeedRoles(modelBuilder);
         }
 
         private static void SeedCategories(ModelBuilder modelBuilder)
@@ -42,6 +44,14 @@ namespace EGrocer.Infrastructure.DataSeeding
                 new Status { Id = 4, Name = "Out for Delivery" },
                 new Status { Id = 5, Name = "Delivered" },
                 new Status { Id = 6, Name = "Cancelled" }
+            );
+        }
+
+        private static void SeedRoles(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<IdentityRole>().HasData(
+                new IdentityRole { Name = "Viewer", NormalizedName = "VIEWER" },
+                new IdentityRole { Name = "Administrator", NormalizedName = "ADMINISTRATOR" }
             );
         }
     }
