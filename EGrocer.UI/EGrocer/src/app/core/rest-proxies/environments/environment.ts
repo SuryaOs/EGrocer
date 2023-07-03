@@ -1,3 +1,5 @@
+import { AuthServiceToken } from "src/app/features/auth/services/auth-i.service";
+import { AuthMockService } from "src/app/features/auth/services/auth.mock.service";
 import { CategoryServiceToken } from "src/app/features/product-category-page/category/service/category-i.service";
 import { CategoryMockService } from "src/app/features/product-category-page/category/service/category.mock.service";
 import { OrderServiceToken } from "src/app/features/product-category-page/checkout/service/order-i.service";
@@ -11,5 +13,6 @@ export const restServices = [
   { provide: ProductServiceToken, useClass: ProductMockService},
   { provide: CategoryServiceToken, useClass: CategoryMockService},
   { provide: FileUploadServiceToken, useClass: FileUploadMockService},
-  { provide: OrderServiceToken, useClass: OrderMockService}
+  { provide: OrderServiceToken, useClass: OrderMockService},
+  { provide: AuthServiceToken, useClass: AuthMockService}
 ]

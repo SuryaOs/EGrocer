@@ -14,6 +14,10 @@ export class AppComponent {
       if (event instanceof NavigationEnd) {
         this.hideHeaderFooter = this.isLoginOrRegistrationPage(event.url);
       }
+      else
+      {
+        this.hideHeaderFooter = true;
+      }
     });
   }
 
