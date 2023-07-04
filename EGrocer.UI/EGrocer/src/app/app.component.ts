@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,11 +12,7 @@ export class AppComponent {
   constructor(private router: Router) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.hideHeaderFooter = this.isLoginOrRegistrationPage(event.url);
-      }
-      else
-      {
-        this.hideHeaderFooter = true;
+        this.hideHeaderFooter = this.isLoginOrRegistrationPage(event.urlAfterRedirects);
       }
     });
   }

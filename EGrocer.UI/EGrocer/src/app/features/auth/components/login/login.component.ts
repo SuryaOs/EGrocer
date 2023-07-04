@@ -38,9 +38,17 @@ export class LoginComponent implements OnInit {
     this.router.navigate(["/auth/registration"]);
   }
 
+  goToProduct(): void {
+    this.router.navigate(["/product-category"]);
+  }
+
   private login(formData: ILogin) {
     this._authService.login(formData).subscribe((response) => {
-      console.log(response);
+      if (response.result) {
+        console.log(response);
+        localStorage.setItem("authToken", response.token);
+        this.goToProduct()
+      }
     });
   }
 }
