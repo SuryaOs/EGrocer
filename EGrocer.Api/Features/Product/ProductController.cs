@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EGrocer.Api.Features.Product;
 
-[Authorize]
+// [Authorize]
 [Route("product")]
 [ApiController]
 public class ProductController : ControllerBase
@@ -36,5 +36,20 @@ public class ProductController : ControllerBase
         var product = await _productService.GetDetails(productId) ??
                      throw new NotFoundException("Product not found");
         return Ok(product);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Add(AddProductRequest productRequest)
+    {
+        return Ok(await _productService.Add(productRequest));
+    }
+
+    [HttpDelete("{productId:int}")]
+    public async Task<IActionResult> Delete(int productId)
+    {
+        var isDeleted = await _productService.Delete(productId) ??
+                        throw new NotFoundException("Product not found");
+
+        return Ok(isDeleted);
     }
 }
