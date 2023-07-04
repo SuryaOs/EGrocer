@@ -32,6 +32,7 @@ public class ExceptionHandlingMiddleware : IMiddleware
             }
         };
 
+        context.Response.StatusCode = errorDetails.StatusCode;
         await context.Response.WriteAsync(errorDetails.ToString());
     }
 }

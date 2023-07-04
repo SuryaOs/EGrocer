@@ -10,12 +10,10 @@ namespace EGrocer.Api.Features.Authentication;
 public class AuthController : ControllerBase
 {
     private readonly IAuthenticationService _authService;
-    private readonly IJwtTokenGenerator _jwtTokenGenerator;
 
-    public AuthController(IAuthenticationService authService, IJwtTokenGenerator jwtTokenGenerator)
+    public AuthController(IAuthenticationService authService)
     {
         _authService = authService;
-        _jwtTokenGenerator = jwtTokenGenerator;
     }
 
     [HttpPost("register")]
@@ -36,11 +34,9 @@ public class AuthController : ControllerBase
     {
         var login = await _authService.Login(userRequest);
 
-        if (!login)
+        if (!login.Result)
             throw new UnauthorizedException("Invalid Email or Password");
 
-        var tokenString = await _jwtTokenGenerator.GenerateToken(userRequest.Email);
-
-        return Ok(tokenString);
+        return Ok(login);
     }
 }

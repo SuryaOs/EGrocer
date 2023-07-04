@@ -1,9 +1,11 @@
 ﻿using EGrocer.Api.Exceptions;
 using EGrocer.Business.Products;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EGrocer.Api.Features.Product;
 
+[Authorize]
 [Route("product")]
 [ApiController]
 public class ProductController : ControllerBase

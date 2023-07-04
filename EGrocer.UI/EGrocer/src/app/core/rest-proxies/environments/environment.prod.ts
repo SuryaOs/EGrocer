@@ -1,3 +1,5 @@
+import { AuthServiceToken } from "src/app/features/auth/services/auth-i.service";
+import { AuthService } from "src/app/features/auth/services/auth.service";
 import { CategoryServiceToken } from "src/app/features/product-category-page/category/service/category-i.service";
 import { CategoryService } from "src/app/features/product-category-page/category/service/category.service";
 import { OrderServiceToken } from "src/app/features/product-category-page/checkout/service/order-i.service";
@@ -11,5 +13,6 @@ export const restServices = [
   { provide: ProductServiceToken, useClass: ProductService},
   { provide: CategoryServiceToken, useClass: CategoryService},
   { provide: FileUploadServiceToken, useClass: FileUploadService},
-  { provide: OrderServiceToken, useClass: OrderService}
+  { provide: OrderServiceToken, useClass: OrderService},
+  { provide: AuthServiceToken, useClass: AuthService}
 ]

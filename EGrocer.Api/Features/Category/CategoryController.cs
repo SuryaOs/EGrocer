@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EGrocer.Api.Features.Categories;
-
+[Authorize]
 [Route("category")]
 [ApiController]
 public class CategoryController : ControllerBase
@@ -15,7 +15,7 @@ public class CategoryController : ControllerBase
     {
         _categoryService = categoryService;
     }
-    [HttpGet, Authorize(Roles = "Administrator")]
+    [HttpGet]
     public async Task<IActionResult> Get()
     {
         var categories = await _categoryService.GetAll();

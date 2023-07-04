@@ -3,10 +3,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
   { path: 'auth', loadChildren: () => import('./features/auth/auth.module').then(m => m.AuthModule) },
   { path: 'product-category', loadChildren: () => import('./features/product-category-page/product-category-page.module').then(m => m.ProductCategoryPageModule) },
   { path: 'checkout', loadChildren: () => import('./features/product-category-page/checkout/checkout.module').then(m => m.CheckoutModule) },
+  { path: '**', redirectTo: 'auth/login' }
 ];
 
 @NgModule({

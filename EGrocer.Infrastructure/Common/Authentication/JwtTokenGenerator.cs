@@ -22,14 +22,14 @@ public class JwtTokenGenerator : IJwtTokenGenerator
         _roleManager = roleManager;
     }
 
-    public async Task<string> GenerateToken(string Email)
+    public async Task<string> GenerateToken(User user)
     {
         var signingCredentials = new SigningCredentials(
     new SymmetricSecurityKey(
         Encoding.UTF8.GetBytes(_jwtSettings.Secret)),
     SecurityAlgorithms.HmacSha256);
 
-        var user = _userManager.Users.FirstOrDefault(x => x.Email == Email);
+
         var claims = await GetAllValidClaims(user);
 
         var securityToken = new JwtSecurityToken(
