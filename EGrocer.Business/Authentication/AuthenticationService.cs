@@ -1,4 +1,6 @@
+using EGrocer.Core.Common.Authentication;
 using EGrocer.Core.Users;
+using EGrocer.Infrastructure.Common.Authentication;
 using Microsoft.AspNetCore.Identity;
 
 namespace EGrocer.Business.Authentication;
@@ -8,12 +10,14 @@ public class AuthenticationService : IAuthenticationService
     private readonly UserManager<User> _userManager;
     private readonly SignInManager<User> _signInManager;
     private readonly RoleManager<IdentityRole> _roleManager;
+    private readonly IJwtTokenGenerator _jwtTokenGenerator;
 
-    public AuthenticationService(UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<IdentityRole> roleManager)
+    public AuthenticationService(UserManager<User> userManager, SignInManager<User> signInManager, RoleManager<IdentityRole> roleManager, IJwtTokenGenerator jwtTokenGenerator)
     {
         _userManager = userManager;
         _signInManager = signInManager;
         _roleManager = roleManager;
+        _jwtTokenGenerator = jwtTokenGenerator;
     }
 
     public async Task<bool> Register(RegisterRequest userRequest)
@@ -42,14 +46,28 @@ public class AuthenticationService : IAuthenticationService
         return false;
     }
 
-    public async Task<bool> Login(LoginRequest userRequest)
+    public async Task<LoginResponse> Login(LoginRequest userRequest)
     {
-    //     var identityUser = await _userManager.FindByEmailAsync(userRequest.Email);
-    //     if(identityUser is null)
-    //     return null;
+        //     var identityUser = await _userManager.FindByEmailAsync(userRequest.Email);
+        //     if(identityUser is null)
+        //     return null;
 
-    //    return await _userManager.CheckPasswordAsync(identityUser, userRequest.Password);
-       var result = await _signInManager.PasswordSignInAsync(userRequest.Email, userRequest.Password, false, false);
-       return result.Succeeded;
+        //    return await _userManager.CheckPasswordAsync(identityUser, userRequest.Password);
+        var tokenString = string.Empty;
+        var result = await _signInManager.PasswordSignInAsync(userRequest.Email, userRequest.Password, false, false);
+
+        if (result.Succeeded)
+        {
+            var user = _userManager.Users.FirstOrDefault(x => x.Email == userRequest.Email);
+            tokenString = await _jwtTokenGenerator.GenerateToken(user);
+        }
+
+        var loginResponse = new LoginResponse
+        {
+            Token = tokenString,
+            Result = result.Succeeded
+
+        };
+        return loginResponse;
     }
 }
