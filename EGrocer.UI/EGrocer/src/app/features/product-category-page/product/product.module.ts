@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ProductRoutingModule, RoutingComponents } from './product-routing.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -10,7 +11,8 @@ import { ProductRoutingModule, RoutingComponents } from './product-routing.modul
   ],
   imports: [
     CommonModule,
-    ProductRoutingModule
+    ProductRoutingModule,
+    SharedModule
   ],
   exports: [RoutingComponents]
 })
