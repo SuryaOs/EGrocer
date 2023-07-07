@@ -12,6 +12,14 @@ export class GridComponent {
 
   // Get the displayed columns from the input columns
   get displayedColumns(): string[] {
-    return this.columns.map(column => column.propertyName);
+    return [...this.columns.map(column => column.propertyName), 'actions']; // Include 'actions' column
+  }
+
+  editItem(item: any){
+    console.log(item);
+  }
+
+  deleteItem(item: any){
+    console.log(item);
   }
 }
