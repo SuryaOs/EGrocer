@@ -373,3 +373,5 @@ Requests/Product/GetByProduct.http
 Requests/Authentication/login.http
 Requests/Authentication/register.http
 Requests/Order/Create.http
+Requests/Product/Add.http
+Requests/Product/Delete.http

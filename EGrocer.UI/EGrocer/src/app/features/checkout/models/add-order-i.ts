@@ -1,4 +1,4 @@
-import { IProduct } from "../../product/models/product-i"
+import { IProduct } from "../../product-category-page/product/models/product-i"
 
 export interface IOrderDetails{
   userAddressId: number,

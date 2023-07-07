@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { ICarts } from "src/app/features/product-category-page/checkout/models/add-order-i";
+import { ICarts } from "src/app/features/checkout/models/add-order-i";
 import { IProduct } from "src/app/features/product-category-page/product/models/product-i";
 
 @Injectable({

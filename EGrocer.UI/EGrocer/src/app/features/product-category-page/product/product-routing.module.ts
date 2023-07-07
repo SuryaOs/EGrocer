@@ -7,16 +7,16 @@ import { SummaryGridComponent } from './components/summary-grid/summary-grid.com
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'product',
     component: ProductComponent,
-  },
-  {
-    path: 'product/:id',
-    component: ProductDetailsComponent,
   },
   {
     path: 'product/admin',
     component: SummaryGridComponent,
+  },
+  {
+    path: 'product/:id',
+    component: ProductDetailsComponent
   }
 ];
 
