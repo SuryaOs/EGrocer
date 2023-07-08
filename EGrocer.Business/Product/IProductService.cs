@@ -9,4 +9,6 @@ public interface IProductService
     Task<IEnumerable<Product?>> Get(int categoryId);
     Task<Product?> GetDetails(int productId);
     Task<bool> Update(IEnumerable<AddOrderDetailsRequest> request);
+    Task<Product> Add(AddProductRequest product);
+    Task<bool?> Delete(int productId);
 }

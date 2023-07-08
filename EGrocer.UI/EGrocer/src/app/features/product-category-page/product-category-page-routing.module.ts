@@ -4,7 +4,7 @@ import { ProductCategoryPageComponent } from './product-category-page.component'
 
 
 const routes: Routes = [
-  { path: '', component: ProductCategoryPageComponent },
+  { path: 'product-category', component: ProductCategoryPageComponent },
 ];
 
 @NgModule({

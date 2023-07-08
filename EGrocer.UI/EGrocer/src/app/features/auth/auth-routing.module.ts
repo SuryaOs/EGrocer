@@ -6,7 +6,7 @@ import { RegistrationComponent } from './components/register/registration.compon
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent, data: { hideHeaderFooter: true } },
-  { path: 'registration', component: RegistrationComponent, data: { hideHeaderFooter: true } },
+  { path: 'register', component: RegistrationComponent, data: { hideHeaderFooter: true } },
 ];
 
 

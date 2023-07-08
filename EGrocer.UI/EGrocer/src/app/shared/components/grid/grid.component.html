@@ -1,0 +1,21 @@
+<table class="table">
+  <thead>
+    <tr>
+      <!-- Define the columns dynamically using ngFor loop -->
+      <th *ngFor="let column of columns">{{ column.displayName }}</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Iterate over the data source and display each row -->
+    <tr *ngFor="let item of data">
+      <!-- Display the row data for each column -->
+      <td *ngFor="let column of columns">{{ item[column.propertyName] }}</td>
+      <td>
+        <!-- Add the edit and delete buttons -->
+        <button class="btn btn-primary" (click)="editItem(item)">Edit</button>
+        <button class="btn btn-danger" (click)="deleteItem(item)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

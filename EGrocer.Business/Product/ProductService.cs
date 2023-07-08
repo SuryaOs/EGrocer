@@ -40,4 +40,34 @@ public class ProductService : IProductService
         await _unitOfWork.Save();
         return true;
     }
+    public async Task<Product> Add(AddProductRequest request)
+    {
+        var product = new Product
+        {
+            Name = request.Name,
+            Price = request.Price,
+            Description = request.Description,
+            ImageName = request.ImageName,
+            AvailableQuantity = request.AvailableQuantity,
+            CategoryId = request.CategoryId,
+        };
+
+        await _unitOfWork.Product.AddAsync(product);
+        await _unitOfWork.Save();
+
+        return product;
+    }
+
+    public async Task<bool?> Delete(int productId)
+    {
+        var product = await _unitOfWork.Product.GetByIdAsync(productId);
+
+        if (product == null)
+            return null;
+
+        _unitOfWork.Product.Delete(product);
+
+        return await _unitOfWork.Save() > 0;
+    }
+
 }
