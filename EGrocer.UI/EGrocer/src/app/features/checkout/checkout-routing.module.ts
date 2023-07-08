@@ -6,7 +6,7 @@ import { PriceDetailsComponent } from './components/price-details/price-details.
 
 
 const routes: Routes = [
-  { path: '', component: CheckoutComponent }
+  { path: 'checkout', component: CheckoutComponent }
 ];
 
 @NgModule({

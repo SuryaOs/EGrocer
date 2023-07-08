@@ -1,8 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { IProduct } from '../../../product/models/product-i';
 import { IAddProduct, ICarts, IOrderDetails } from '../../models/add-order-i';
 import { CartService } from 'src/app/shared/service/cart/cart.service';
 import { IOrderService, OrderServiceToken } from '../../service/order-i.service';
+import { IProduct } from 'src/app/features/product-category-page/product/models/product-i';
 
 @Component({
   selector: 'app-summary',
