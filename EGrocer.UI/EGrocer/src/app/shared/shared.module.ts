@@ -3,9 +3,10 @@ import { CommonModule } from "@angular/common";
 import { HeaderComponent } from "./components/header/header.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { CartComponent } from "./components/cart/cart.component";
+import { GridComponent } from './components/grid/grid.component';
 
 
-const components = [HeaderComponent, FooterComponent, CartComponent];
+const components = [HeaderComponent, FooterComponent, CartComponent, GridComponent];
 
 @NgModule({
   declarations: [components],
