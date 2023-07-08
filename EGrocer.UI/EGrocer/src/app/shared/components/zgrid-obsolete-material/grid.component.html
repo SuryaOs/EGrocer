@@ -1,11 +1,11 @@
-<mat-table [dataSource]="dataSource" class="grid-table">
-  <!-- Define the columns dynamically using ngFor loop -->
+<!--<mat-table [dataSource]="dataSource" class="grid-table">
+  <!-- Define the columns dynamically using ngFor loop
   <ng-container *ngFor="let column of columns" [matColumnDef]="column.propertyName">
     <mat-header-cell *matHeaderCellDef>{{ column.displayName }}</mat-header-cell>
     <mat-cell *matCellDef="let item">{{ item[column.propertyName] }}</mat-cell>
   </ng-container>
 
-  <!-- Add an additional column for the buttons -->
+  <!-- Add an additional column for the buttons
   <ng-container matColumnDef="actions">
     <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>
     <mat-cell *matCellDef="let item">
@@ -18,9 +18,9 @@
     </mat-cell>
   </ng-container>
 
-  <!-- Table Header -->
+  <!-- Table Header
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
 
-  <!-- Table Rows -->
+  <!-- Table Rows
   <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-</mat-table>
+</mat-table> -->
