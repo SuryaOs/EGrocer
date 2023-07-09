@@ -1,11 +1,18 @@
-<div *ngFor="let product of products">
-  {{ product.id}}
-  {{ product.name }}
-  <img [src]="product.imageName" height="50" width="50">
-  <p><span (click)="incrementQuantity(product)"><b>+</b></span> {{ productQuantities[product.id] }} <span
-      (click)="decrementQuantity(product)"><b>-</b></span></p>
-  <!-- <button type="button" (click)="checkout(product.id)">Check Out!</button> -->
+<div class="row">
+  <div class="col" *ngFor="let product of products">
+    <div class="card">
+      <img [src]="product.imageName" class="card-img" alt="Product Image">
+      <div class="card-content">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">ID: {{ product.id }}</p>
+        <p class="card-text">Price: ${{ product.price }}</p>
+        <div class="product-quantity">
+          <p>Quantity:</p>
+          <button (click)="decrementQuantity(product)">-</button>
+          <span>{{ productQuantities[product.id] }}</span>
+          <button (click)="incrementQuantity(product)">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<!-- <div>
-  <input type="file" (change)="onFileChange($event)"/>
-</div> -->

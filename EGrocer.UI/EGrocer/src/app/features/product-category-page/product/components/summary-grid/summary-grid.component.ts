@@ -4,6 +4,7 @@ import { IGridColumn } from "src/app/shared/interfaces/grid-column-i";
 import { IProductService, ProductServiceToken } from "../../service/product-i.service";
 import { ICategoryService, CategoryServiceToken } from "../../../category/service/category-i.service";
 import { ICategory } from "../../../category/models/category-i";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-summary-grid",
@@ -25,12 +26,16 @@ export class SummaryGridComponent implements OnInit {
     @Inject(ProductServiceToken)
     private _productService: IProductService,
     @Inject(CategoryServiceToken)
-    private _categoryService: ICategoryService
+    private _categoryService: ICategoryService,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.loadCategories();
     this.loadProducts();
+  }
+  onAddButtonClick() {
+    this.router.navigate(["/admin/product/add"]);
   }
 
   private loadCategories() {

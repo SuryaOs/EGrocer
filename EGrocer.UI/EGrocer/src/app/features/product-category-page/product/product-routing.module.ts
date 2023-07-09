@@ -11,11 +11,15 @@ const routes: Routes = [
     component: ProductComponent,
   },
   {
-    path: 'product/admin',
+    path: 'admin/product',
     component: SummaryGridComponent,
   },
   {
-    path: 'product/:id',
+    path: 'admin/product/add',
+    component: ProductDetailsComponent
+  },
+  {
+    path: 'admin/product/:id',
     component: ProductDetailsComponent
   }
 ];

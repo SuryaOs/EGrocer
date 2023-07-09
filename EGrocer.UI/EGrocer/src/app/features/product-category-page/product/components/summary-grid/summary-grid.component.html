@@ -1,1 +1,4 @@
-<app-grid [data]="products" [columns]="gridColumns"></app-grid>
+<div class="grid-container">
+  <button class="add-button" (click)="onAddButtonClick()">Add</button>
+  <app-grid [data]="products" [columns]="gridColumns"></app-grid>
+</div>

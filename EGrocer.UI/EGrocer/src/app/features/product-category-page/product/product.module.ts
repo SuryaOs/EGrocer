@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ProductRoutingModule, RoutingComponents } from './product-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     ProductRoutingModule,
     SharedModule
   ],

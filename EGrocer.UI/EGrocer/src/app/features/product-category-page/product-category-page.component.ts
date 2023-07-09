@@ -15,6 +15,6 @@ export class ProductCategoryPageComponent implements OnInit {
   ngOnInit() {}
 
   navigateToCheckoutPage(): void {
-    this.router.navigate(["product/admin"]);
+    this.router.navigate(["admin/product"]);
   }
 }
