@@ -10,7 +10,7 @@ import { Routes, RouterModule } from '@angular/router';
 // ];
 
 const routes: Routes = [
-  // { path: '', redirectTo: '/login', pathMatch: 'full'},
+  { path: '', redirectTo: '/login', pathMatch: 'full'},
   // { path: 'register', redirectTo: '/registration', pathMatch: 'full'}
 ];
 @NgModule({
