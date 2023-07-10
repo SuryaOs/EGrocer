@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { CategoryServiceToken, ICategoryService } from "../../../category/service/category-i.service";
 import { ICategory } from "../../../category/models/category-i";
 import { FileUploadServiceToken, IFileUploadService } from "src/app/shared/service/file-upload/file-upload-i.service";
-import { IProduct } from "../../models/product-i";
 
 @Component({
   selector: "app-product-details",
@@ -27,7 +26,6 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.loadCategories();
-    this.initProductForm();
   }
 
     onFileChange(event: any) {
@@ -76,6 +74,7 @@ export class ProductDetailsComponent implements OnInit {
   private loadCategories() {
     this._categoryService.getAllCategory().subscribe((category: ICategory[]) => {
       this.categories = category;
+      this.initProductForm();
     });
   }
 

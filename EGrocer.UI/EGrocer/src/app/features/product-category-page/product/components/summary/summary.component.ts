@@ -43,8 +43,8 @@ export class ProductComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (!changes.categoryId.firstChange) {
-      const categoryId = changes.categoryId.currentValue;
+    if (!changes['categoryId'].firstChange) {
+      const categoryId = changes['categoryId'].currentValue;
       this.loadProducts(categoryId);
     }
   }

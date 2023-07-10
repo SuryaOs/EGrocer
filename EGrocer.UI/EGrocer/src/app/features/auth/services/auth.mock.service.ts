@@ -16,7 +16,7 @@ export class AuthMockService implements IAuthService{
   login(requestBody: ILogin): Observable<ILoginResponse> {
     return of({
       token: '',
-      result: false
+      result: true
     });
   }
 }
