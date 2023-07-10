@@ -33,8 +33,6 @@ export class ProductComponent implements OnInit, OnChanges {
   constructor(
     @Inject(ProductServiceToken)
     private _productService: IProductService,
-    @Inject(FileUploadServiceToken)
-    private _fileUploadService: IFileUploadService,
     public _cartService: CartService,
     private route: ActivatedRoute,
     private router: Router
@@ -45,8 +43,8 @@ export class ProductComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (!changes.categoryId.firstChange) {
-      const categoryId = changes.categoryId.currentValue;
+    if (!changes['categoryId'].firstChange) {
+      const categoryId = changes['categoryId'].currentValue;
       this.loadProducts(categoryId);
     }
   }

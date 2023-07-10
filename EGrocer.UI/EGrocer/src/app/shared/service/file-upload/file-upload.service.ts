@@ -1,7 +1,11 @@
 import { environment } from "src/environments/environment";
 import { IFileUploadService } from "./file-upload-i.service";
 import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
 
+@Injectable({
+  providedIn: 'root'
+})
 export class FileUploadService implements IFileUploadService {
   constructor(public http: HttpClient) {
   }

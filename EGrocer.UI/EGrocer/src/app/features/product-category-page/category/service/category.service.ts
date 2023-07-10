@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
 })
 export class CategoryService extends BaseClientProxy implements ICategoryService {
 
-  constructor(public http: HttpClient) {
+  constructor(http: HttpClient) {
     super(http);
   }
   getAllCategory(): Observable<ICategory[]>{

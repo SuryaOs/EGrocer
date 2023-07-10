@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class GridComponent {
   @Input() data!: any[];
-  @Input() columns!: string[];
+  @Input() columns!: any[];
 
   editItem(item: any) {
     // Handle edit logic here

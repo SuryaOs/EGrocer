@@ -12,7 +12,7 @@ import { ILogin, ILoginResponse } from '../models/login-i';
 })
 export class AuthService extends BaseClientProxy implements IAuthService {
 
-  constructor(public http: HttpClient) {
+  constructor(http: HttpClient) {
     super(http);
   }
   register(requestBody: IRegister): Observable<boolean>{
