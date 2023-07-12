@@ -45,7 +45,6 @@ export class LoginComponent implements OnInit {
   private login(formData: ILogin) {
     this._authService.login(formData).subscribe((response) => {
       if (response.result) {
-        console.log(response);
         localStorage.setItem("authToken", response.token);
         this.goToProduct()
       }

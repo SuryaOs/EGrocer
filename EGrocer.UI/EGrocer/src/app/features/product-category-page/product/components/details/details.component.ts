@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   Inject,
   OnInit,
@@ -14,6 +15,7 @@ import {
   FileUploadServiceToken,
   IFileUploadService,
 } from "src/app/shared/service/file-upload/file-upload-i.service";
+import { IProductService, ProductServiceToken } from "../../service/product-i.service";
 
 @Component({
   selector: "app-product-details",
@@ -32,11 +34,15 @@ export class ProductDetailsComponent implements OnInit {
     private _categoryService: ICategoryService,
     @Inject(FileUploadServiceToken)
     private _fileUploadService: IFileUploadService,
-    private _formBuilder: FormBuilder
+    @Inject(ProductServiceToken)
+    private _productService: IProductService,
+    private _formBuilder: FormBuilder,
+    private cd: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
-    this.loadCategories();
+   this.loadCategories();
+   this.initProductForm();
   }
 
   onFileChange(event: any) {
@@ -59,25 +65,28 @@ export class ProductDetailsComponent implements OnInit {
     .uploadImage(this.fileToUpload, 'product')
     .subscribe(
       (response: any) => {
-        console.log('File uploaded successfully', response);
+        const requestBody = this.buildRequestBody(response.imageName);
+        this.save(requestBody);
       }
     );
   }
 
-  private saveProduct() {
-    const requestBody = this.buildRequestBody();
+  private save(requestBody: any) {
+    this._productService.save(requestBody).subscribe((response) => {
+      console.log(response);
+    })
   }
 
-  private buildRequestBody() {
-    const productName = this.productForm.get("name")?.value.ToLowerCase();
+  private buildRequestBody(imageName: string) {
     const product = {
-      Name: productName,
-      Price: this.productForm.get("price")?.value,
+      Name: this.productForm.get("name")?.value,
+      Price: Number(this.productForm.get("price")?.value),
       Description: this.productForm.get("description")?.value,
-      ImageName: productName,
-      AvailableQuantity: 1,
-      CategoryId: this.productForm.get("categoryId")?.value,
+      ImageName: imageName,
+      AvailableQuantity: Number(this.productForm.get("quantity")?.value),
+      CategoryId: Number(this.productForm.get("category")?.value),
     };
+    return product;
   }
 
   onClear() {
@@ -90,7 +99,7 @@ export class ProductDetailsComponent implements OnInit {
       .getAllCategory()
       .subscribe((category: ICategory[]) => {
         this.categories = category;
-        this.initProductForm();
+        this.cd.detectChanges();
       });
   }
 
@@ -100,6 +109,7 @@ export class ProductDetailsComponent implements OnInit {
       description: [""],
       category: ["", Validators.required],
       price: ["", Validators.required],
+      quantity: ["", Validators.required],
       image: [""],
     });
   }

@@ -10,4 +10,7 @@ export interface IProductService{
   getAllProducts(): Observable<IProduct[]>;
   getProductByCategoryId(categoryId: number): Observable<IProduct[]>;
   getProductByProductId(productId: number): Observable<IProduct>;
+
+  save(requestBody: IProduct): Observable<IProduct>;
+  delete(productId: number): Observable<boolean>;
 }
