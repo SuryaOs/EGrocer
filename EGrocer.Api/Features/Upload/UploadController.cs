@@ -16,9 +16,10 @@ namespace EGrocer.Api.Features.Upload
         [HttpPost]
         public async Task<IActionResult> Upload([FromForm] IFormFile file)
         {
-                var featureName = Request.Form["featureName"];
-                await _uploadService.Upload(file, featureName);
-                return Ok("Success");
+            var featureName = Request.Form["featureName"];
+            var imageName = await _uploadService.Upload(file, featureName);
+            var response = new { ImageName = imageName };
+            return Ok(response);
         }
     }
 }

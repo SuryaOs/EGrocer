@@ -8,7 +8,16 @@ export class ErrorInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
-        const errorMessage = error.error.Message || 'An error occurred';
+        let errorMessage = 'An error occurred';
+
+        // Check the error type or status code and set a custom error message
+        if (error.error instanceof ErrorEvent) {
+          // Client-side error
+          errorMessage = 'An error occurred: ' + error.error.message;
+        } else {
+          // Server-side error
+          errorMessage = 'Server error: ' + error.status + ' - ' + error.message;
+        }
 
         // Show the error message in an alert
         window.alert(errorMessage);
