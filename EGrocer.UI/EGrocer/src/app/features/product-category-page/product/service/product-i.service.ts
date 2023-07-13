@@ -13,4 +13,5 @@ export interface IProductService{
 
   save(requestBody: IProduct): Observable<IProduct>;
   delete(productId: number): Observable<boolean>;
+  update(requestBody: any): Observable<IProduct>
 }

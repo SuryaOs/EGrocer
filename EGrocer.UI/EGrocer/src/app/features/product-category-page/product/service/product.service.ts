@@ -40,6 +40,11 @@ export class ProductService extends BaseClientProxy implements IProductService {
   delete(productId: number): Observable<boolean> {
     return this.baseDelete(`${environment.apiUrl}/product/${productId}`);
   }
+  update(requestBody: any): Observable<IProduct> {
+    return this.basePut<any, IProduct>(`${environment.apiUrl}/product`, requestBody).pipe(
+      map(this.modifyProductImage)
+    );
+  }
 
   private modifyProductImage(product: IProduct): IProduct {
     const imageName = product.imageName || 'noimage.jpg';

@@ -68,7 +68,7 @@ public class ProductService : IProductService
             product.Price = request.Price;
             product.Description = request.Description;
             product.ImageName = request.ImageName;
-            product.AvailableQuantity = request.Quantity;
+            product.AvailableQuantity = request.AvailableQuantity;
             product.CategoryId = request.CategoryId;
              await _unitOfWork.Save();
         }

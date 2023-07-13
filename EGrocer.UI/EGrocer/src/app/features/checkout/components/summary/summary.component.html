@@ -8,6 +8,6 @@
 <div *ngFor="let product of products">
   {{ product.id}}
   {{ product.name }}
-  <img [src]="product.imageName" height="50" width="50">
+  <img [src]="product.imageName" height="50" width="50" imageFallBack>
 </div>
 <button (click)="placeOrder()">Place Order</button>

@@ -44,8 +44,12 @@ export class SummaryGridComponent implements OnInit {
     this.router.navigate(["/admin/product/add"]);
   }
 
-  handleDelete(event: any) {
-    this._productService.delete(event).subscribe((response) => {
+  handleEdit(productId: any) {
+    this.router.navigate([`/admin/product/${productId}`]);
+  }
+
+  handleDelete(productId: any) {
+    this._productService.delete(productId).subscribe((response) => {
       if (response) {
         console.log("Delete Success");
         this.loadProducts();

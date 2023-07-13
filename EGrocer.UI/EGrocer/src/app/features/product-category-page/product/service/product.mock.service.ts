@@ -91,4 +91,7 @@ export class ProductMockService implements IProductService {
   delete(productId: number): Observable<boolean> {
     return of(true);
   }
+  update(requestBody: any): Observable<IProduct> {
+    return of();
+  }
 }

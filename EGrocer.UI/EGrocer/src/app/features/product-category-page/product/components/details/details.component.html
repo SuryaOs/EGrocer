@@ -21,9 +21,12 @@
     <label for="quantity">Quantity:</label>
     <input type="text" id="price" formControlName="quantity" autocomplete="off" required>
   </div>
-  <div>
+  <div *ngIf="imageUrl == undefined">
     <label for="image">Image:</label>
     <input type="file" id="image" formControlName="image" (change)="onFileChange($event)">
+  </div>
+  <div *ngIf="imageUrl != undefined">
+    <img [src]="imageUrl" imageFallback>
   </div>
 
   <div>

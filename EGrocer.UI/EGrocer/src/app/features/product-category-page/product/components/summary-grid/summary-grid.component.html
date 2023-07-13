@@ -1,4 +1,9 @@
 <div class="grid-container">
   <button class="add-button" (click)="onAddButtonClick()">Add</button>
-  <app-grid [data]="products" [columns]="gridColumns" (delete)="handleDelete($event)"></app-grid>
+  <app-grid
+    [data]="products"
+    [columns]="gridColumns"
+    (delete)="handleDelete($event)"
+    (edit)="handleEdit($event)"
+  ></app-grid>
 </div>
