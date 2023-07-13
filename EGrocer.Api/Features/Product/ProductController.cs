@@ -52,4 +52,12 @@ public class ProductController : ControllerBase
 
         return Ok(isDeleted);
     }
+    [HttpPut]
+    public async Task<IActionResult> Update(UpdateProductRequest productRequest)
+    {
+         var isUpdated = await _productService.Update(productRequest) ??
+                        throw new NotFoundException("Product not found");
+
+        return Ok(isUpdated);
+    }
 }
