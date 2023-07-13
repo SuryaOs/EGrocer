@@ -4,5 +4,5 @@ namespace EGrocer.Business.Upload;
 
 public interface IUploadService
 {
-    Task Upload(IFormFile formFile, string featureName);
+    Task<string> Upload(IFormFile formFile, string featureName);
 }

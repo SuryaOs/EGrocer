@@ -4,15 +4,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { RoutingComponents, AuthRoutingModule } from './auth-routing.module';
 import { AuthComponent } from './auth.component';
-import { TextOnlyDirective } from 'src/app/shared/directives/text-only.directive';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
-  declarations: [RoutingComponents, AuthComponent, TextOnlyDirective],
+  declarations: [RoutingComponents, AuthComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,
     ReactiveFormsModule,
+    SharedModule
   ]
 })
 export class AuthModule { }

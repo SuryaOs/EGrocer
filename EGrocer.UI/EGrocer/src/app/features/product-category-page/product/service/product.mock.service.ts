@@ -85,4 +85,13 @@ export class ProductMockService implements IProductService {
       availableQuantity: 1,
     });
   }
+  save(requestBody: IProduct): Observable<IProduct> {
+    return of();
+  }
+  delete(productId: number): Observable<boolean> {
+    return of(true);
+  }
+  update(requestBody: any): Observable<IProduct> {
+    return of();
+  }
 }

@@ -11,4 +11,5 @@ public interface IProductService
     Task<bool> Update(IEnumerable<AddOrderDetailsRequest> request);
     Task<Product> Add(AddProductRequest product);
     Task<bool?> Delete(int productId);
+    Task<Product?> Update(UpdateProductRequest product);
 }

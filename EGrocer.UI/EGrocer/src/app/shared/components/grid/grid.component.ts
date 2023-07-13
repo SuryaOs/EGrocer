@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-grid',
@@ -9,13 +9,14 @@ export class GridComponent {
   @Input() data!: any[];
   @Input() columns!: any[];
 
+  @Output() edit = new EventEmitter<number>();
+  @Output() delete = new EventEmitter<number>();
+
   editItem(item: any) {
-    // Handle edit logic here
-    console.log('Edit item:', item);
+    this.edit.emit(item.id)
   }
 
   deleteItem(item: any) {
-    // Handle delete logic here
-    console.log('Delete item:', item);
+    this.delete.emit(item.id);
   }
 }

@@ -12,7 +12,7 @@ public class UploadService : IUploadService
         _hostingEnvironment = hostingEnvironment;
     }
 
-    public async Task Upload(IFormFile formFile, string featureName)
+    public async Task<string> Upload(IFormFile formFile, string featureName)
     {
         var wwwPath = _hostingEnvironment.WebRootPath;
 
@@ -20,7 +20,11 @@ public class UploadService : IUploadService
         if(!Directory.Exists(filePath))
             Directory.CreateDirectory(filePath);
 
-        var imagePath = Path.Combine(filePath, formFile.FileName);
+        var imageName = Path.GetFileNameWithoutExtension(formFile.FileName) + "_" +
+                        DateTime.Now.ToString("yyyyMMddHHmmss") +
+                        Path.GetExtension(formFile.FileName);
+
+        var imagePath = Path.Combine(filePath, imageName);
 
         if(File.Exists(imagePath))
             File.Delete(imagePath);
@@ -28,7 +32,7 @@ public class UploadService : IUploadService
         using var fileStream = new FileStream(imagePath, FileMode.Create);
         await formFile.CopyToAsync(fileStream);
 
-        return;
+        return imageName;
     }
 
 }

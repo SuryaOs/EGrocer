@@ -58,6 +58,24 @@ public class ProductService : IProductService
         return product;
     }
 
+    public async Task<Product?> Update(UpdateProductRequest request)
+    {
+        var product = await GetDetails(request.Id);
+
+        if (product != null)
+        {
+            product.Name = request.Name;
+            product.Price = request.Price;
+            product.Description = request.Description;
+            product.ImageName = request.ImageName;
+            product.AvailableQuantity = request.AvailableQuantity;
+            product.CategoryId = request.CategoryId;
+             await _unitOfWork.Save();
+        }
+
+        return product;
+    }
+
     public async Task<bool?> Delete(int productId)
     {
         var product = await _unitOfWork.Product.GetByIdAsync(productId);

@@ -1,5 +1,4 @@
 import {
-  ChangeDetectionStrategy,
   Component,
   Inject,
   Input,
@@ -11,12 +10,7 @@ import {
   IProductService,
   ProductServiceToken,
 } from "../../service/product-i.service";
-import { Observable } from "rxjs";
 import { IProduct } from "../../models/product-i";
-import {
-  FileUploadServiceToken,
-  IFileUploadService,
-} from "src/app/shared/service/file-upload/file-upload-i.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { CartService } from "src/app/shared/service/cart/cart.service";
 
