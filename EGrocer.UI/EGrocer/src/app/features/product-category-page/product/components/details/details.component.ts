@@ -6,7 +6,6 @@ import { FileUploadServiceToken, IFileUploadService } from "src/app/shared/servi
 import { IProductService, ProductServiceToken } from "../../service/product-i.service";
 import { ActivatedRoute } from "@angular/router";
 import { IProduct } from "../../models/product-i";
-import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-product-details",
@@ -20,7 +19,7 @@ export class ProductDetailsComponent implements OnInit {
 
   fileToUpload: any;
   productId: any;
-  imageUrl!: string;
+  imageUrl = "";
 
   constructor(
     @Inject(CategoryServiceToken)
@@ -97,6 +96,7 @@ export class ProductDetailsComponent implements OnInit {
   onClear() {
     this.productForm.reset();
     this.fileToUpload = undefined;
+    this.imageUrl = "";
   }
 
   private loadProduct(productId: any) {

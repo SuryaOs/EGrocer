@@ -18,6 +18,6 @@ export class AppComponent {
   }
 
   isLoginOrRegistrationPage(url: string): boolean {
-    return url.includes('login') || url.includes('registration');
+    return url.includes('login') || url.includes('register');
   }
 }

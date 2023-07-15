@@ -11,7 +11,7 @@
   </div>
   <div>
     <label for="description">Description:</label>
-    <textarea id="description" formControlName="description" autocomplete="off"></textarea>
+    <textarea id="description" formControlName="description" autocomplete="off" required></textarea>
   </div>
   <div>
     <label for="price">Price:</label>
@@ -21,11 +21,11 @@
     <label for="quantity">Quantity:</label>
     <input type="text" id="price" formControlName="quantity" autocomplete="off" required>
   </div>
-  <div *ngIf="imageUrl == undefined">
+  <div *ngIf="imageUrl == ''">
     <label for="image">Image:</label>
     <input type="file" id="image" formControlName="image" (change)="onFileChange($event)">
   </div>
-  <div *ngIf="imageUrl != undefined">
+  <div *ngIf="imageUrl != ''">
     <img [src]="imageUrl" imageFallback>
   </div>
 
