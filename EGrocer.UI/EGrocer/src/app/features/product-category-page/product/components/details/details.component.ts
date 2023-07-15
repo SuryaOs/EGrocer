@@ -20,7 +20,7 @@ export class ProductDetailsComponent implements OnInit {
 
   fileToUpload: any;
   productId: any;
-  imageUrl!: string;
+  imageUrl = "";
 
   constructor(
     @Inject(CategoryServiceToken)
@@ -97,6 +97,7 @@ export class ProductDetailsComponent implements OnInit {
   onClear() {
     this.productForm.reset();
     this.fileToUpload = undefined;
+    this.imageUrl = "";
   }
 
   private loadProduct(productId: any) {
