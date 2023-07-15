@@ -1,8 +1,7 @@
-namespace EGrocer.Core.Users;
+namespace EGrocer.Business.UserAddresses;
 
-public class UserAddress
+public class AddUserAddressRequest
 {
-    public int Id { get; set; }
     public string City { get; set; } = string.Empty;
     public string State { get; set; } = string.Empty;
     public string Address1 { get; set; } = string.Empty;
@@ -10,9 +9,5 @@ public class UserAddress
     public int ZipCode { get; set; }
     public string MobileNumber { get; set; } = string.Empty;
     public bool IsDefault { get; set; }
-
-    // one to one relationship, foreign key
     public string UserId { get; set; } = string.Empty;
-    public required User User { get; set; }
-
 }

@@ -4,6 +4,7 @@ using EGrocer.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EGrocer.Infrastructure.Migrations
 {
     [DbContext(typeof(GrocerDbContext))]
-    partial class GrocerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230715164916_Added_UserAddress_MobileNumber")]
+    partial class Added_UserAddress_MobileNumber
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
