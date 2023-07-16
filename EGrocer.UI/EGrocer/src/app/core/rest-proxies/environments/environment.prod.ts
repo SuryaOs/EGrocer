@@ -2,6 +2,8 @@ import { AuthServiceToken } from "src/app/features/auth/services/auth-i.service"
 import { AuthService } from "src/app/features/auth/services/auth.service";
 import { OrderServiceToken } from "src/app/features/checkout/service/order-i.service";
 import { OrderService } from "src/app/features/checkout/service/order.service";
+import { UserAddressServiceToken } from "src/app/features/checkout/service/user-address-i.service";
+import { UserAddressService } from "src/app/features/checkout/service/user-address.service";
 import { CategoryServiceToken } from "src/app/features/product-category-page/category/service/category-i.service";
 import { CategoryService } from "src/app/features/product-category-page/category/service/category.service";
 import { ProductServiceToken } from "src/app/features/product-category-page/product/service/product-i.service";
@@ -14,5 +16,6 @@ export const restServices = [
   { provide: CategoryServiceToken, useClass: CategoryService},
   { provide: FileUploadServiceToken, useClass: FileUploadService},
   { provide: OrderServiceToken, useClass: OrderService},
-  { provide: AuthServiceToken, useClass: AuthService}
+  { provide: AuthServiceToken, useClass: AuthService},
+  { provide: UserAddressServiceToken, useClass: UserAddressService}
 ]

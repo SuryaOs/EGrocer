@@ -10,30 +10,19 @@
   margin-bottom: 10px;
 }
 
-.price-items {
+.address-details {
   margin-bottom: 10px;
 }
 
-.price-item {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 5px;
-}
-
-.item-label {
+.address-name {
   font-weight: bold;
 }
 
-.item-amount {
-  color: #337ab7;
+.address-line {
+  margin-bottom: 5px;
 }
 
-.total {
-  margin-top: 10px;
-  font-size: 16px;
-}
-
-.place-order-button {
+.change-address-button {
   background-color: #337ab7;
   color: #fff;
   padding: 5px 10px;

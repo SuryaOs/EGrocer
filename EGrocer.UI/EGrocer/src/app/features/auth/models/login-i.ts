@@ -6,4 +6,5 @@ export interface ILogin{
 export interface ILoginResponse {
   token: string;
   result: boolean;
+  userId: string;
 }
