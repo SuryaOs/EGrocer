@@ -3,10 +3,12 @@ using EGrocer.Core.Common;
 using EGrocer.Core.Common.Repository;
 using EGrocer.Core.Orders;
 using EGrocer.Core.Products;
+using EGrocer.Core.Users;
 using EGrocer.Infrastructure.Common.Repository;
 using EGrocer.Infrastructure.Orders;
 using EGrocer.Infrastructure.Repositories.Categories;
 using EGrocer.Infrastructure.Repositories.Products;
+using EGrocer.Infrastructure.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
@@ -20,6 +22,7 @@ public class UnitOfWork : IUnitOfWork
     public ICategoryRepository Category { get; private set; }
     public IOrderRepository Order { get; private set; }
     public IOrderDetailsRepository OrderDetails { get; private set; }
+    public IUserAddressRepository UserAddress { get; private set; }
 
     public UnitOfWork(GrocerDbContext context)
     {
@@ -28,6 +31,7 @@ public class UnitOfWork : IUnitOfWork
         Category = new CategoryRepository(_context);
         Order = new OrderRepository(_context);
         OrderDetails = new OrderDetailsRepository(_context);
+        UserAddress = new UserAddressRepository(_context);
     }
     public async Task<IUnitOfWorkTransaction> BeginTransactionAsync()
     {
@@ -43,7 +47,7 @@ public class UnitOfWork : IUnitOfWork
 
     public Task<int> Save()
     {
-      return _context.SaveChangesAsync();
+        return _context.SaveChangesAsync();
     }
 
     public void Dispose()
@@ -55,7 +59,7 @@ public class UnitOfWork : IUnitOfWork
     {
         if (disposing && _context != null)
         {
-             _context.Dispose();
+            _context.Dispose();
         }
     }
 

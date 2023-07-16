@@ -13,6 +13,6 @@ public class UserAddress
 
     // one to one relationship, foreign key
     public string UserId { get; set; } = string.Empty;
-    public required User User { get; set; }
+    public User? User { get; set; }
 
 }
