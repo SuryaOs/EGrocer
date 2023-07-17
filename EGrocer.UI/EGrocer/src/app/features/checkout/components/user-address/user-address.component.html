@@ -1,30 +1,34 @@
-<!-- <div class="card">
-  <div class="card-content">
-    <div class="row">
-      <div class="column">
-        <div class="line">
-          <span>Deliver to: Surya, {{ userAddress.zipCode }}</span>
-        </div>
-        <div class="line">
-          <span>{{ userAddress.address1 }}</span>
-          <span>{{ userAddress.address2 }}</span>
+<div class="address">
+  <div class="line">Deliver to: Surya, {{ userAddress.zipCode }}</div>
+  <div class="line">{{ userAddress.address1 }}, {{ userAddress.address2 }}</div>
+  <button (click)="changeAddress()">Change</button>
+</div>
+
+<!-- Address Modal -->
+<div class="modal" [ngClass]="{'open': isModalOpen}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Select Address</h4>
+        <button type="button" class="close" aria-label="Close" (click)="cancelAddress()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div *ngFor="let address of userAddresses" class="address-item">
+          <div class="radio-wrapper">
+            <input type="radio" name="selectedAddress" [value]="address" [checked]="address.id === selectedAddress.id" (change)="selectAddress(address)">
+          </div>
+          <div class="address-details">
+            <div>Surya, {{ address.zipCode }}</div>
+            <div>{{ address.address1 }}, {{ address.address2 }}</div>
+          </div>
         </div>
       </div>
-      <div class="column">
-        <div class="button-container">
-          <button class="change-button" (click)="changeAddress()">Change</button>
-        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="saveAddress()">OK</button>
+        <button type="button" class="btn btn-secondary" (click)="cancelAddress()">Cancel</button>
       </div>
     </div>
   </div>
-</div> -->
-
-<div class="checkout-section">
-  <h2 class="section-title">Delivery Address</h2>
-  <div class="address-details">
-    <p class="address-name">John Doe</p>
-    <p class="address-line">123 Street, City</p>
-    <p class="address-line">State, Country - 123456</p>
-  </div>
-  <button class="change-address-button">Change Address</button>
 </div>
