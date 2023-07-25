@@ -1,4 +1,6 @@
-Tet# EGrocer
+#
+I HAVE STOPPED THIS APP TEMPORARILY TO FOCUS MORE ON .NET (MicroServices, gRPC, MessagingService etc..), AND AZ-204 PREPARATION.
+# EGrocer
 An E-Commerce Web API for Grocery Products where vendors can add, view, edit and delete their products.
 
 # Tech
