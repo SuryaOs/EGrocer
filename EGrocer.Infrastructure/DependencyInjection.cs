@@ -15,7 +15,11 @@ public static class DependencyInjection
         services
             .AddDbContext<GrocerDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("GrocerConnection")))
             .Configure<JwtSettings>(configuration.GetSection(JwtSettings.SectionName))
+            .BuildServiceProvider().GetService<GrocerDbContext>().Database.Migrate();
 
+        Console.WriteLine("Connection string is " + configuration.GetConnectionString("GrocerConnection"));
+
+         services
             .AddScoped<IUnitOfWork, UnitOfWork>()
             .AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
 
