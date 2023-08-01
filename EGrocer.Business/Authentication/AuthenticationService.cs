@@ -53,21 +53,23 @@ public class AuthenticationService : IAuthenticationService
         //     return null;
 
         //    return await _userManager.CheckPasswordAsync(identityUser, userRequest.Password);
-        var tokenString = string.Empty;
         var result = await _signInManager.PasswordSignInAsync(userRequest.Email, userRequest.Password, false, false);
 
         if (result.Succeeded)
         {
             var user = _userManager.Users.FirstOrDefault(x => x.Email == userRequest.Email);
-            tokenString = await _jwtTokenGenerator.GenerateToken(user);
+            var token = await _jwtTokenGenerator.GenerateToken(user);
+
+            return new LoginResponse
+            {
+                Result = true,
+                Token = token,
+                UserId = user.Id
+            };
         }
-
-        var loginResponse = new LoginResponse
+        return new LoginResponse
         {
-            Token = tokenString,
-            Result = result.Succeeded
-
+            Result = false
         };
-        return loginResponse;
     }
 }

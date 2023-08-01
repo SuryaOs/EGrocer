@@ -1,13 +1,24 @@
-<!-- <div *ngIf="product$ | async as product">
-  <img [src]="product.imageName" height="50" width="50">
-  <p>{{ product.name }}</p>
-  <p>{{ product.description }}</p>
-  <p>{{ product.price }}</p>
-</div> -->
-
-<div *ngFor="let product of products">
+<!-- <div *ngFor="let product of products">
   {{ product.id}}
   {{ product.name }}
   <img [src]="product.imageName" height="50" width="50" imageFallBack>
 </div>
-<button (click)="placeOrder()">Place Order</button>
+<button (click)="placeOrder()">Place Order</button> -->
+
+<div class="checkout-section">
+  <h2 class="section-title">Order Summary</h2>
+  <div class="order-items">
+    <div class="order-item">
+      <img class="item-image" src="path/to/product-image.jpg" alt="Product Image">
+      <div class="item-details">
+        <p class="item-name">Product Name</p>
+        <p class="item-price">$99.99</p>
+      </div>
+    </div>
+    <!-- Additional order items can be added here -->
+  </div>
+  <div class="order-total">
+    <p class="total-label">Total:</p>
+    <p class="total-amount">$99.99</p>
+  </div>
+</div>
